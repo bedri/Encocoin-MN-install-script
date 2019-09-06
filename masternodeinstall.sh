@@ -28,7 +28,7 @@ NC='\033[0m'
 MAG='\e[1;35m'
 
 purgeOldInstallation() {
-    echo -e "${GREEN}Searching and removing old $COIN_NAME files and configurations${NC}"
+    echo -e "${GREEN}Searching and removing old $PROJECT_NAME files and configurations${NC}"
     #kill wallet daemon
 	sudo killall $COIN_DAEMON > /dev/null 2>&1
     #remove old ufw port allow
@@ -137,12 +137,12 @@ function create_key() {
    echo -e "${RED}$COIN_NAME server couldn not start. Check /var/log/syslog for errors.{$NC}"
    exit 1
   fi
-  COINKEY=$($COIN_PATH$COIN_CLI masternode genkey)
+  COINKEY=$($COIN_PATH$COIN_CLI createmasternodekey)
   if [ "$?" -gt "0" ];
     then
     echo -e "${RED}Wallet not fully loaded. Let us wait and try again to generate the GEN Key${NC}"
     sleep 30
-    COINKEY=$($COIN_PATH$COIN_CLI masternode genkey)
+    COINKEY=$($COIN_PATH$COIN_CLI createmasternodekey)
   fi
   $COIN_PATH$COIN_CLI stop
 fi
@@ -223,7 +223,7 @@ fi
 }
 
 function prepare_system() {
-echo -e "Preparing the VPS to setup ${CYAN}$COIN_NAME${NC} ${RED}Masternode${NC}"
+echo -e "Preparing the VPS to setup ${CYAN}$PROJECT_NAME${NC} ${RED}Masternode${NC}"
 
 rm /var/lib/apt/lists/lock
 rm /var/cache/apt/archives/lock
@@ -270,7 +270,7 @@ function important_information() {
  echo -e "MASTERNODE GENKEY is: ${RED}$COINKEY${NC}"
  echo -e "Check ${RED}$COIN_CLI getblockcount${NC} and compare to ${GREEN}$COIN_EXPLORER${NC}."
  echo -e "Check ${GREEN}Collateral${NC} already full confirmed and start masternode."
- echo -e "Use ${RED}$COIN_CLI masternode status${NC} to check your MN Status."
+ echo -e "Use ${RED}$COIN_CLI getmasternodestatus${NC} to check your MN Status."
  echo -e "Use ${RED}$COIN_CLI help${NC} for help."
  if [[ -n $SENTINEL_REPO  ]]; then
  echo -e "${RED}Sentinel${NC} is installed in ${RED}/root/sentinel_$COIN_NAME${NC}"

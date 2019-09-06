@@ -28,7 +28,7 @@ NC='\033[0m'
 MAG='\e[1;35m'
 
 purgeOldInstallation() {
-    echo -e "${GREEN}Searching and removing old $COIN_NAME files and configurations${NC}"
+    echo -e "${GREEN}Searching and removing old $PROJECT_NAME files and configurations${NC}"
     #kill wallet daemon
 	sudo killall $COIN_DAEMON
     #remove old ufw port allow
@@ -36,7 +36,7 @@ purgeOldInstallation() {
     #remove old files
     sudo rm $COIN_CLI $COIN_DAEMON
     sudo rm -rf ~/.$COIN_NAME
-    #remove binaries and $COIN_NAME utilities
+    #remove binaries and $PROJECT_NAME utilities
     cd /usr/local/bin && sudo rm $COIN_CLI $COIN_DAEMON && cd
     echo -e "${GREEN}* Done${NONE}";
 }
@@ -54,7 +54,7 @@ function install_sentinel() {
 }
 
 function download_node() {
-  echo -e "${GREEN}Downloading and Installing VPS $COIN_NAME Daemon${NC}"
+  echo -e "${GREEN}Downloading and Installing VPS $PROJECT_NAME Daemon${NC}"
   cd $TMP_FOLDER
   wget -q $COIN_TGZD
   wget -q $COIN_TGZC
@@ -138,12 +138,12 @@ function create_key() {
    echo -e "${RED}$COIN_NAME server couldn not start. Check /var/log/syslog for errors.{$NC}"
    exit 1
   fi
-  COINKEY=$($COIN_PATH$COIN_CLI masternode genkey)
+  COINKEY=$($COIN_PATH$COIN_CLI createmasternodekey)
   if [ "$?" -gt "0" ];
     then
     echo -e "${RED}Wallet not fully loaded. Let us wait and try again to generate the GEN Key${NC}"
     sleep 30
-    COINKEY=$($COIN_PATH$COIN_CLI masternode genkey)
+    COINKEY=$($COIN_PATH$COIN_CLI createmasternodekey)
   fi
   $COIN_PATH$COIN_CLI stop
 fi
@@ -272,7 +272,7 @@ function important_information() {
  echo -e "MASTERNODE GENKEY is: ${RED}$COINKEY${NC}"
  echo -e "Check ${RED}$COIN_CLI getblockcount${NC} and compare to ${GREEN}$COIN_EXPLORER${NC}."
  echo -e "Check ${GREEN}Collateral${NC} already full confirmed and start masternode."
- echo -e "Use ${RED}$COIN_CLI masternode status${NC} to check your MN Status."
+ echo -e "Use ${RED}$COIN_CLI getmasternodestatus${NC} to check your MN Status."
  echo -e "Use ${RED}$COIN_CLI help${NC} for help."
  if [[ -n $SENTINEL_REPO  ]]; then
  echo -e "${RED}Sentinel${NC} is installed in ${RED}/root/sentinel_$COIN_NAME${NC}"
