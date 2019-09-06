@@ -28,14 +28,16 @@ NC='\033[0m'
 MAG='\e[1;35m'
 
 purgeOldInstallation() {
-    echo -e "${GREEN}Searching and removing old ${BLUE}$PROJECT_NAME ${GREEN}files and configurations${NC}"
+    echo -e "${YELLOW}Searching and removing old ${BLUE}$PROJECT_NAME Masternode ${YELLOW}files and configurations${NC}"
+	#stopping service
+	systemctl stop $COIN_NAME.service
     #kill wallet daemon
-	sudo killall $COIN_DAEMON > /dev/null 2>&1
+	killall $COIN_DAEMON > /dev/null 2>&1
     #remove old ufw port allow
-    sudo ufw delete allow $COIN_PORT/tcp > /dev/null 2>&1
+    ufw delete allow $COIN_PORT/tcp > /dev/null 2>&1
     #remove old files
-    sudo rm $COIN_CLI $COIN_DAEMON > /dev/null 2>&1
-    sudo rm -rf ~/.$COIN_NAME > /dev/null 2>&1
+    rm $COIN_CLI $COIN_DAEMON > /dev/null 2>&1
+    rm -rf ~/.$COIN_NAME > /dev/null 2>&1
     #remove binaries and $COIN_NAME utilities
     cd /usr/local/bin && sudo rm $COIN_CLI $COIN_DAEMON > /dev/null 2>&1 && cd
     echo -e "${GREEN}* Done${NONE}";
@@ -244,7 +246,7 @@ fi
 }
 
 function prepare_system() {
-echo -e "Preparing the VPS to setup ${CYAN}$PROJECT_NAME${NC} ${RED}Masternode${NC}"
+echo -e "${YELLOW}Preparing the VPS to setup ${BLUE}$PROJECT_NAME Masternode${NC}"
 
 rm /var/lib/apt/lists/lock > /dev/null 2>&1
 rm /var/cache/apt/archives/lock > /dev/null 2>&1

@@ -28,14 +28,16 @@ NC='\033[0m'
 MAG='\e[1;35m'
 
 purgeOldInstallation() {
-    echo -e "${GREEN}Searching and removing old $PROJECT_NAME files and configurations${NC}"
+    echo -e "${YELLOW}Searching and removing old ${BLUE}$PROJECT_NAME Masternode ${YELLOW}files and configurations${NC}"
+	#stopping service
+	systemctl stop $COIN_NAME.service
     #kill wallet daemon
-	sudo killall $COIN_DAEMON
+	killall $COIN_DAEMON
     #remove old ufw port allow
-    sudo ufw delete allow $COIN_PORT/tcp
+    ufw delete allow $COIN_PORT/tcp
     #remove old files
-    sudo rm $COIN_CLI $COIN_DAEMON
-    sudo rm -rf ~/.$COIN_NAME
+    rm $COIN_CLI $COIN_DAEMON
+    rm -rf ~/.$COIN_NAME
     #remove binaries and $PROJECT_NAME utilities
     cd /usr/local/bin && sudo rm $COIN_CLI $COIN_DAEMON && cd
     echo -e "${GREEN}* Done${NONE}";
@@ -243,7 +245,7 @@ fi
 }
 
 function prepare_system() {
-echo -e "Preparing the VPS to setup ${CYAN}$PROJECT_NAME${NC} ${RED}Masternode${NC}"
+echo -e "${YELLOW}Preparing the VPS to setup ${BLUE}$PROJECT_NAME Masternode${NC}"
 
 rm /var/lib/apt/lists/lock
 rm /var/cache/apt/archives/lock
