@@ -30,7 +30,7 @@ MAG='\e[1;35m'
 purgeOldInstallation() {
     echo -e "${YELLOW}Searching and removing old ${BLUE}$PROJECT_NAME ${GREEN}Masternode ${YELLOW}files and configurations${NC}"
 	#stopping service
-	systemctl stop $COIN_NAME.service
+	systemctl stop $COIN_NAME.service &
 	echo -ne "${RED}### ${GREEN}(10%)${NC}\r"
 	sleep 1
 	echo -ne "${RED}###### ${GREEN}(20%)${NC}\r"
@@ -408,10 +408,13 @@ echo -e "alias encocoininfo='/root/encocoin-networkinfo'" >> /etc/profile
 echo -e "alias feestats='/root/encocoin-fee-info'" >> /etc/profile
 echo -e "alias networkstats='/root/encocoin-networkinfo'" >> /etc/profile
 echo -e "alias mnstats='/root/encocoin-masternode-stats'" >> /etc/profile
+
 alias encocoininfo='/root/encocoin-networkinfo'
 alias feestats='/root/encocoin-fee-info'
 alias networkstats='/root/encocoin-networkinfo'
 alias mnstats='/root/encocoin-masternode-stats'
+
+exec "$BASH"
 }
 
 function important_information() {
