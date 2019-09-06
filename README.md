@@ -10,7 +10,7 @@ To install Encocoin PoS (XNK PoS) Masternode use the following command:
 bash <( curl -sL https://raw.githubusercontent.com/bedri/Encocoin-MN-install-script/master/masternodeinstall.sh)
 ```
 
-or (![+18](https://placehold.it/15/f03c15/000000?text=+) **`for +18`**) _while drinking beer_
+or (![+18](https://placehold.it/15/f03c15/000000?text=+) **`+18`**) _while drinking beer_
 
 ```bash
 bash <( curl -sL https://raw.githubusercontent.com/bedri/Encocoin-MN-install-script/master/masternodeinstall_beer.sh)
