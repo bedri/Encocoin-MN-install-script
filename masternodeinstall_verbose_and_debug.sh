@@ -288,31 +288,36 @@ clear
 function set_scripts_and_aliases() {
 cat << EOF > /root/encocoin-general-info
 echo -e "\n\n${BLUE}=======================================================================================================${NC}\n"
-echo -e "${GREEN}$PROJECT_NAME General Info: ${NC}$COIN_CLI getinfo${NC}"
+echo -e "${GREEN}$PROJECT_NAME General Info: ${NC}"
+$COIN_CLI getinfo
 echo -e "${BLUE}=======================================================================================================${NC}\n"
 EOF
 chmod +x /root/encocoin-general-info
 
 cat << EOF > /root/encocoin-fee-info
 echo -e "\n\n${BLUE}=======================================================================================================${NC}\n"
-echo -e "${GREEN}$PROJECT_NAME Fee Info: ${NC}$COIN_CLI getfeeinfo 100${NC}"
+echo -e "${GREEN}$PROJECT_NAME Fee Info: ${NC}"
+$COIN_CLI getfeeinfo 100
 echo -e "${BLUE}=======================================================================================================${NC}\n"
 EOF
 chmod +x /root/encocoin-fee-info
 
 cat << EOF > /root/encocoin-networkinfo
 echo -e "\n\n${BLUE}=======================================================================================================${NC}\n"
-echo -e "${GREEN}$PROJECT_NAME Network Info: ${NC}$COIN_CLI getnetworkinfo${NC}"
+echo -e "${GREEN}$PROJECT_NAME Network Info: ${NC}"
+$COIN_CLI getnetworkinfo
 echo -e "\n${BLUE}=======================================================================================================${NC}\n"
 EOF
 chmod +x /root/encocoin-networkinfo
 
 cat << EOF > /root/encocoin-masternode-stats
 echo -e "\n\n${BLUE}=======================================================================================================${NC}\n"
-echo -e "${GREEN}Last Block: ${NC}$COIN_CLI getblockcount${NC}"
-echo -e "${GREEN}Masternode Sync Status: ${NC}$COIN_CLI mnsync status${NC}"
+echo -e "${GREEN}Last Block: ${NC}"
+$COIN_CLI getblockcount
+echo -e "${GREEN}Masternode Sync Status: ${NC}"
+$COIN_CLI mnsync status
 echo -e "${GREEN}Masternode Status: ${NC}"
-echo -e "$COIN_CLI getmasternodestatus${NC}"
+$COIN_CLI getmasternodestatus
 echo -e "\n${BLUE}=======================================================================================================${NC}\n"
 EOF
 chmod +x /root/encocoin-masternode-stats
