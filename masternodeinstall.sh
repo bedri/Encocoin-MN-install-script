@@ -28,7 +28,7 @@ NC='\033[0m'
 MAG='\e[1;35m'
 
 purgeOldInstallation() {
-    echo -e "${GREEN}Searching and removing old $PROJECT_NAME files and configurations${NC}"
+    echo -e "${GREEN}Searching and removing old ${BLUE}$PROJECT_NAME ${GREEN}files and configurations${NC}"
     #kill wallet daemon
 	sudo killall $COIN_DAEMON > /dev/null 2>&1
     #remove old ufw port allow
@@ -54,7 +54,7 @@ function install_sentinel() {
 }
 
 function download_node() {
-  echo -e "${GREEN}Downloading and Installing VPS $PROJECT_NAME Daemon${NC}"
+  echo -e "${GREEN}Downloading and Installing VPS ${BLUE}$PROJECT_NAME${NC} Daemon${NC}"
   cd $TMP_FOLDER >/dev/null 2>&1
   wget -q $COIN_TGZD
   wget -q $COIN_TGZC
@@ -101,7 +101,7 @@ EOF
   sleep 3
   systemctl start $COIN_NAME.service
   systemctl enable $COIN_NAME.service >/dev/null 2>&1
-  echo -e "\n${GREEN}Encocoin PoS (XNK-PoS) Service Status\n${NC}"
+  echo -e "\n${BLUE}$PROJECT_NAME ${GREEN}Service Status\n${NC}"
   systemctl status $COIN_NAME.service
   echo -e "\n${BLUE}=======================================================================================================${NC}\n"
 
@@ -135,7 +135,7 @@ EOF
 }
 
 function create_key() {
-  echo -e "${YELLOW}Enter your ${RED}$PROJECT_NAME Masternode Private Key${NC} produced on your local wallet by ${RED}createmasternodekey${NC} command${NC} or press enter for a Masternode Private Key is generated automatically"
+  echo -e "${NC}Enter your ${BLUE}$PROJECT_NAME Masternode Private Key${NC} produced on your local wallet by ${RED}createmasternodekey${NC} command or press enter for a Masternode Private Key is generated automatically"
   read -e COINKEY
   if [[ -z "$COINKEY" ]]; then
   $COIN_PATH$COIN_DAEMON -daemon
