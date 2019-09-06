@@ -125,11 +125,11 @@ EOF
 
 	echo -e "\nReloading Service Daemon\n"
   	systemctl daemon-reload
-	echo -ne "${NONE} ${LICON}${LICON}${LICON}## ${GREEN}(33%)${NC}\r"
+	echo -ne "${NONE} ${LICON}${LICON}${LICON} ${GREEN}(33%)${NC}\r"
 	sleep 1
-	echo -ne "${NONE} ${LICON}${LICON}${LICON}${LICON}${LICON}${LICON}${LICON}${LICON}${LICON}${LICON}${LICON}${LICON}# ${GREEN}(66%)${NC}\r"
+	echo -ne "${NONE} ${LICON}${LICON}${LICON}${LICON}${LICON}${LICON}${LICON}${LICON}${LICON}${LICON}${LICON}${LICON} ${GREEN}(66%)${NC}\r"
 	sleep 1
-	echo -ne "${NONE} ${LICON}${LICON}${LICON}${LICON}${LICON}${LICON}${LICON}${LICON}${LICON}${LICON}${LICON}${LICON}${LICON}${LICON}${LICON}${LICON}${LICON}${LICON}${LICON}${LICON}${LICON}## ${GREEN}(100%)${NC}\r"
+	echo -ne "${NONE} ${LICON}${LICON}${LICON}${LICON}${LICON}${LICON}${LICON}${LICON}${LICON}${LICON}${LICON}${LICON}${LICON}${LICON}${LICON}${LICON}${LICON}${LICON}${LICON}${LICON}${LICON} ${GREEN}(100%)${NC}\r"
 	sleep 1
 	echo -ne '\n'
     echo -e "${GREEN}* Done${NONE}";
