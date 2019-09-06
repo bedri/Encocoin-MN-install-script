@@ -3,7 +3,8 @@ Encocoin Masternode Install Script
 
 **_This script is tested on Hetzner VPS with Ubuntu 16.04 and Ubuntu 16.04 operating systems. Although it should work with all VPS hosts you should test it before use it._**
 
-**Installation of Encocoin PoS (XNK PoS) Masternode and usage of script**
+### Installation of Encocoin PoS (XNK PoS) Masternode and usage of script
+
 To install Encocoin PoS (XNK PoS) Masternode use the following command:
 ```
 bash <( curl -sL https://raw.githubusercontent.com/bedri/Encocoin-MN-install-script/master/masternodeinstall.sh)
