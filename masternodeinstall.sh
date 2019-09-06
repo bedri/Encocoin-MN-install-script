@@ -325,7 +325,7 @@ chmod +x /root/encocoin-masternode-stats
 
 sed '/feestats/d' .bashrc | sed '/networkstats/d' | sed '/mnstats/d' | sed '/encocoininfo/d' > tmp
 mv tmp .bashrc
-echo -e "\n\n" >> .bashrc
+# echo -e "\n\n" >> .bashrc
 echo -e "alias encocoininfo='/root/encocoin-networkinfo'" >> .bashrc
 echo -e "alias feestats='/root/encocoin-fee-info'" >> .bashrc
 echo -e "alias networkstats='/root/encocoin-networkinfo'" >> .bashrc
