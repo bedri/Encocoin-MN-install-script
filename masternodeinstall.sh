@@ -135,13 +135,13 @@ EOF
 }
 
 function create_key() {
-  echo -e "${NC}Enter your ${BLUE}$PROJECT_NAME Masternode Private Key${NC} produced on your local wallet by ${RED}createmasternodekey${NC} command or press enter for a Masternode Private Key is generated automatically"
+  echo -e "${YELLOW}Enter your ${BLUE}$PROJECT_NAME Masternode Private Key${YELLOW} produced on your local wallet by ${RED}createmasternodekey${YELLOW} command or press enter for a Masternode Private Key is generated automatically${$NC}"
   read -e COINKEY
   if [[ -z "$COINKEY" ]]; then
   $COIN_PATH$COIN_DAEMON -daemon
   sleep 30
   if [ -z "$(ps axo cmd:100 | grep $COIN_DAEMON)" ]; then
-   echo -e "${RED}$COIN_NAME server couldn not start. Check /var/log/syslog for errors.{$NC}"
+   echo -e "${RED}$COIN_NAME server couldn not start. Check /var/log/syslog for errors.${$NC}"
    exit 1
   fi
   COINKEY=$($COIN_PATH$COIN_CLI createmasternodekey)
@@ -325,7 +325,6 @@ chmod +x /root/encocoin-masternode-stats
 
 sed '/feestats/d' .bashrc | sed '/networkstats/d' | sed '/mnstats/d' | sed '/encocoininfo/d' > tmp
 mv tmp .bashrc
-# echo -e "\n\n" >> .bashrc
 echo -e "alias encocoininfo='/root/encocoin-networkinfo'" >> .bashrc
 echo -e "alias feestats='/root/encocoin-fee-info'" >> .bashrc
 echo -e "alias networkstats='/root/encocoin-networkinfo'" >> .bashrc
