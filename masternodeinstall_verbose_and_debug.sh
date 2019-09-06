@@ -123,7 +123,15 @@ WantedBy=multi-user.target
 EOF
 
   systemctl daemon-reload
-  sleep 3
+	echo -ne "#####                     	${GREEN}(33%)${NC}\r"
+	sleep 1
+	echo -ne "#############             	${GREEN}(66%)${NC}\r"
+	sleep 1
+	echo -ne "#######################   	${GREEN}(100%)${NC}\r"
+	sleep 1
+	echo -ne "##########################	${GREEN}Done${NC}\r"
+	echo -ne '\n'
+#   sleep 3
   systemctl start $COIN_NAME.service
   systemctl enable $COIN_NAME.service >/dev/null 2>&1
   echo -e "\n${GREEN}Encocoin PoS (XNK-PoS) Service Status\n${NC}"
@@ -163,7 +171,29 @@ function create_key() {
   read -e COINKEY
   if [[ -z "$COINKEY" ]]; then
   $COIN_PATH$COIN_DAEMON -daemon
-  sleep 30
+	echo -ne "#				${GREEN}(10%)${NC}\r"
+	sleep 3
+	echo -ne "##			${GREEN}(20%)${NC}\r"
+	sleep 3
+	echo -ne "###			${GREEN}(30%)${NC}\r"
+	sleep 3
+	echo -ne "####			${GREEN}(40%)${NC}\r"
+	sleep 3
+	echo -ne "#####			${GREEN}(50%)${NC}\r"
+	sleep 3
+	echo -ne "######		${GREEN}(60%)${NC}\r"
+	sleep 3
+	echo -ne "#######		${GREEN}(70%)${NC}\r"
+	sleep 3
+	echo -ne "########		${GREEN}(80%)${NC}\r"
+	sleep 3
+	echo -ne "#########		${GREEN}(90%)${NC}\r"
+	sleep 3
+	echo -ne "##########	${GREEN}(100%)${NC}\r"
+	sleep 3
+	echo -ne "###########	${GREEN}Done${NC}\r"
+	echo -ne '\n'
+#   sleep 30
   if [ -z "$(ps axo cmd:100 | grep $COIN_DAEMON)" ]; then
    echo -e "${RED}$COIN_NAME server couldn not start. Check /var/log/syslog for errors.${$NC}"
    exit 1
@@ -172,7 +202,29 @@ function create_key() {
   if [ "$?" -gt "0" ];
     then
     echo -e "${RED}Wallet not fully loaded. Let us wait and try again to generate the ${GREEN}Masternode Private Key${NC}"
-    sleep 30
+	echo -ne "#				${GREEN}(10%)${NC}\r"
+	sleep 3
+	echo -ne "##			${GREEN}(20%)${NC}\r"
+	sleep 3
+	echo -ne "###			${GREEN}(30%)${NC}\r"
+	sleep 3
+	echo -ne "####			${GREEN}(40%)${NC}\r"
+	sleep 3
+	echo -ne "#####			${GREEN}(50%)${NC}\r"
+	sleep 3
+	echo -ne "######		${GREEN}(60%)${NC}\r"
+	sleep 3
+	echo -ne "#######		${GREEN}(70%)${NC}\r"
+	sleep 3
+	echo -ne "########		${GREEN}(80%)${NC}\r"
+	sleep 3
+	echo -ne "#########		${GREEN}(90%)${NC}\r"
+	sleep 3
+	echo -ne "##########	${GREEN}(100%)${NC}\r"
+	sleep 3
+	echo -ne "###########	${GREEN}Done${NC}\r"
+	echo -ne '\n'
+    # sleep 30
     COINKEY=$($COIN_PATH$COIN_CLI createmasternodekey)
   fi
   $COIN_PATH$COIN_CLI stop
