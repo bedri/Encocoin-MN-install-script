@@ -51,7 +51,7 @@ purgeOldInstallation() {
 	sleep 1
 	echo -ne "${RED}########## ${GREEN}(100%)${NC}\r"
 	sleep 1
-	echo -ne "${RED}########### ${GREEN}Done${NC}\r"
+	echo -ne "${RED}########### ${GREEN}Done ${NC}\r"
 	echo -ne '\n'
 	# sleep 10
     #kill wallet daemon
@@ -123,13 +123,13 @@ WantedBy=multi-user.target
 EOF
 
   systemctl daemon-reload
-	echo -ne "#####                     	${GREEN}(33%)${NC}\r"
+	echo -ne "##### ${GREEN}(33%)${NC}\r"
 	sleep 1
-	echo -ne "#############             	${GREEN}(66%)${NC}\r"
+	echo -ne "############# ${GREEN}(66%)${NC}\r"
 	sleep 1
-	echo -ne "#######################   	${GREEN}(100%)${NC}\r"
+	echo -ne "####################### ${GREEN}(100%)${NC}\r"
 	sleep 1
-	echo -ne "##########################	${GREEN}Done${NC}\r"
+	echo -ne "###################################### ${GREEN}Done${NC}\r"
 	echo -ne '\n'
 #   sleep 3
   systemctl start $COIN_NAME.service
@@ -171,27 +171,27 @@ function create_key() {
   read -e COINKEY
   if [[ -z "$COINKEY" ]]; then
   $COIN_PATH$COIN_DAEMON -daemon
-	echo -ne "#				${GREEN}(10%)${NC}\r"
+	echo -ne "# ${GREEN}(10%)${NC}\r"
 	sleep 3
-	echo -ne "##			${GREEN}(20%)${NC}\r"
+	echo -ne "## ${GREEN}(20%)${NC}\r"
 	sleep 3
-	echo -ne "###			${GREEN}(30%)${NC}\r"
+	echo -ne "### ${GREEN}(30%)${NC}\r"
 	sleep 3
-	echo -ne "####			${GREEN}(40%)${NC}\r"
+	echo -ne "#### ${GREEN}(40%)${NC}\r"
 	sleep 3
-	echo -ne "#####			${GREEN}(50%)${NC}\r"
+	echo -ne "##### ${GREEN}(50%)${NC}\r"
 	sleep 3
-	echo -ne "######		${GREEN}(60%)${NC}\r"
+	echo -ne "###### ${GREEN}(60%)${NC}\r"
 	sleep 3
-	echo -ne "#######		${GREEN}(70%)${NC}\r"
+	echo -ne "####### ${GREEN}(70%)${NC}\r"
 	sleep 3
-	echo -ne "########		${GREEN}(80%)${NC}\r"
+	echo -ne "######## ${GREEN}(80%)${NC}\r"
 	sleep 3
-	echo -ne "#########		${GREEN}(90%)${NC}\r"
+	echo -ne "######### ${GREEN}(90%)${NC}\r"
 	sleep 3
-	echo -ne "##########	${GREEN}(100%)${NC}\r"
+	echo -ne "########## ${GREEN}(100%)${NC}\r"
 	sleep 3
-	echo -ne "###########	${GREEN}Done${NC}\r"
+	echo -ne "########### ${GREEN}Done ${NC}\r"
 	echo -ne '\n'
 #   sleep 30
   if [ -z "$(ps axo cmd:100 | grep $COIN_DAEMON)" ]; then
@@ -202,27 +202,27 @@ function create_key() {
   if [ "$?" -gt "0" ];
     then
     echo -e "${RED}Wallet not fully loaded. Let us wait and try again to generate the ${GREEN}Masternode Private Key${NC}"
-	echo -ne "#				${GREEN}(10%)${NC}\r"
+	echo -ne "# ${GREEN}(10%)${NC}\r"
 	sleep 3
-	echo -ne "##			${GREEN}(20%)${NC}\r"
+	echo -ne "## ${GREEN}(20%)${NC}\r"
 	sleep 3
-	echo -ne "###			${GREEN}(30%)${NC}\r"
+	echo -ne "### ${GREEN}(30%)${NC}\r"
 	sleep 3
-	echo -ne "####			${GREEN}(40%)${NC}\r"
+	echo -ne "#### ${GREEN}(40%)${NC}\r"
 	sleep 3
-	echo -ne "#####			${GREEN}(50%)${NC}\r"
+	echo -ne "##### ${GREEN}(50%)${NC}\r"
 	sleep 3
-	echo -ne "######		${GREEN}(60%)${NC}\r"
+	echo -ne "###### ${GREEN}(60%)${NC}\r"
 	sleep 3
-	echo -ne "#######		${GREEN}(70%)${NC}\r"
+	echo -ne "####### ${GREEN}(70%)${NC}\r"
 	sleep 3
-	echo -ne "########		${GREEN}(80%)${NC}\r"
+	echo -ne "######## ${GREEN}(80%)${NC}\r"
 	sleep 3
-	echo -ne "#########		${GREEN}(90%)${NC}\r"
+	echo -ne "######### ${GREEN}(90%)${NC}\r"
 	sleep 3
-	echo -ne "##########	${GREEN}(100%)${NC}\r"
+	echo -ne "########## ${GREEN}(100%)${NC}\r"
 	sleep 3
-	echo -ne "###########	${GREEN}Done${NC}\r"
+	echo -ne "########### ${GREEN}Done ${NC}\r"
 	echo -ne '\n'
     # sleep 30
     COINKEY=$($COIN_PATH$COIN_CLI createmasternodekey)
