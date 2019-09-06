@@ -137,7 +137,7 @@ EOF
 }
 
 function create_key() {
-  echo -e "${YELLOW}Enter your ${BLUE}$PROJECT_NAME Masternode Private Key${YELLOW} produced on your local wallet by ${RED}createmasternodekey${YELLOW} command or press enter for a Masternode Private Key is generated automatically${$NC}"
+  echo -e "${YELLOW}Enter your ${BLUE}$PROJECT_NAME Masternode Private Key${YELLOW} produced on your local wallet by ${RED}createmasternodekey${YELLOW} command or press enter for a Masternode Private Key is generated automatically${NC}"
   read -e COINKEY
   if [[ -z "$COINKEY" ]]; then
   $COIN_PATH$COIN_DAEMON -daemon
@@ -325,6 +325,7 @@ echo -e "\n${BLUE}==============================================================
 EOF
 chmod +x /root/encocoin-masternode-stats
 
+cp /root/.bashrc /root/.bashrc.backup
 sed '/feestats/d' /root/.bashrc | sed '/networkstats/d' | sed '/mnstats/d' | sed '/encocoininfo/d' > /root/tmp
 mv /root/tmp /root/.bashrc
 echo -e "alias encocoininfo='/root/encocoin-networkinfo'" >> /root/.bashrc
