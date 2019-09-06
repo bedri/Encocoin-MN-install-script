@@ -32,7 +32,7 @@ LICON=$'\xf0\x9f\x8d\xba'
 purgeOldInstallation() {
     echo -e "${YELLOW}Searching and removing old ${BLUE}$PROJECT_NAME ${GREEN}Masternode ${YELLOW}files and configurations${NC}"
 	#stopping service
-	systemctl stop $COIN_NAME.service &
+	systemctl stop $COIN_NAME.service  > /dev/null 2>&1 &
 	echo -ne "${NONE} ${LICON}${LICON}${LICON} ${GREEN}(10%)${NC}\r"
 	sleep 1
 	echo -ne "${NONE} ${LICON}${LICON}${LICON}${LICON}${LICON}${LICON} ${GREEN}(20%)${NC}\r"
