@@ -6,16 +6,16 @@ Encocoin Masternode Install Script
 ### Installation of Encocoin PoS (XNK PoS) Masternode and usage of script
 
 To install Encocoin PoS (XNK PoS) Masternode use the following command:
-```
+```bash
 bash <( curl -sL https://raw.githubusercontent.com/bedri/Encocoin-MN-install-script/master/masternodeinstall.sh)
 ```
 
 or while drinking beer **(for +18)**
-```
+```bash
 bash <( curl -sL https://raw.githubusercontent.com/bedri/Encocoin-MN-install-script/master/masternodeinstall_beer.sh)
 ```
 
 For to see verbose output (the output of all the commands) use the command:
-```
+```bash
 bash <( curl -sL https://raw.githubusercontent.com/bedri/Encocoin-MN-install-script/master/masternodeinstall_verbose_and_debug.sh)
 ```
