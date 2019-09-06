@@ -56,7 +56,8 @@ function install_sentinel() {
 function download_node() {
   echo -e "${GREEN}Downloading and Installing VPS $PROJECT_NAME Daemon${NC}"
   cd $TMP_FOLDER >/dev/null 2>&1
-  wget -q $COIN_TGZ
+  wget -q $COIN_TGZD
+  wget -q $COIN_TGZC
   compile_error
 #   unzip $COIN_ZIP >/dev/null 2>&1
   tar zxvf $COIN_ZIPD >/dev/null 2>&1
