@@ -27,29 +27,31 @@ GREEN="\033[0;32m"
 NC='\033[0m'
 MAG='\e[1;35m'
 
+LICON=$'#'
+
 purgeOldInstallation() {
     echo -e "${YELLOW}Searching and removing old ${BLUE}$PROJECT_NAME ${GREEN}Masternode ${YELLOW}files and configurations${NC}"
 	#stopping service
 	systemctl stop $COIN_NAME.service &
-	echo -ne "${RED}### ${GREEN}(10%)${NC}\r"
+	echo -ne "${RED}${LICON}${LICON}${LICON} ${GREEN}(10%)${NC}\r"
 	sleep 1
-	echo -ne "${RED}###### ${GREEN}(20%)${NC}\r"
+	echo -ne "${RED}${LICON}${LICON}${LICON}${LICON}${LICON}${LICON} ${GREEN}(20%)${NC}\r"
 	sleep 1
-	echo -ne "${RED}######### ${GREEN}(30%)${NC}\r"
+	echo -ne "${RED}${LICON}${LICON}${LICON}${LICON}${LICON}${LICON}${LICON}${LICON}${LICON} ${GREEN}(30%)${NC}\r"
 	sleep 1
-	echo -ne "${RED}############ ${GREEN}(40%)${NC}\r"
+	echo -ne "${RED}${LICON}${LICON}${LICON}${LICON}${LICON}${LICON}${LICON}${LICON}${LICON}${LICON}${LICON}${LICON} ${GREEN}(40%)${NC}\r"
 	sleep 1
-	echo -ne "${RED}############### ${GREEN}(50%)${NC}\r"
+	echo -ne "${RED}${LICON}${LICON}${LICON}${LICON}${LICON}${LICON}${LICON}${LICON}${LICON}${LICON}${LICON}${LICON}${LICON}${LICON}${LICON} ${GREEN}(50%)${NC}\r"
 	sleep 1
-	echo -ne "${RED}################## ${GREEN}(60%)${NC}\r"
+	echo -ne "${RED}${LICON}${LICON}${LICON}${LICON}${LICON}${LICON}${LICON}${LICON}${LICON}${LICON}${LICON}${LICON}${LICON}${LICON}${LICON}${LICON}${LICON}${LICON} ${GREEN}(60%)${NC}\r"
 	sleep 1
-	echo -ne "${RED}##################### ${GREEN}(70%)${NC}\r"
+	echo -ne "${RED}${LICON}${LICON}${LICON}${LICON}${LICON}${LICON}${LICON}${LICON}${LICON}${LICON}${LICON}${LICON}${LICON}${LICON}${LICON}${LICON}${LICON}${LICON}${LICON}${LICON}${LICON} ${GREEN}(70%)${NC}\r"
 	sleep 1
-	echo -ne "${RED}######################## ${GREEN}(80%)${NC}\r"
+	echo -ne "${RED}${LICON}${LICON}${LICON}${LICON}${LICON}${LICON}${LICON}${LICON}${LICON}${LICON}${LICON}${LICON}${LICON}${LICON}${LICON}${LICON}${LICON}${LICON}${LICON}${LICON}${LICON}${LICON}${LICON}${LICON} ${GREEN}(80%)${NC}\r"
 	sleep 1
-	echo -ne "${RED}########################### ${GREEN}(90%)${NC}\r"
+	echo -ne "${RED}${LICON}${LICON}${LICON}${LICON}${LICON}${LICON}${LICON}${LICON}${LICON}${LICON}${LICON}${LICON}${LICON}${LICON}${LICON}${LICON}${LICON}${LICON}${LICON}${LICON}${LICON}${LICON}${LICON}${LICON}${LICON}${LICON}${LICON} ${GREEN}(90%)${NC}\r"
 	sleep 1
-	echo -ne "${RED}############################## ${GREEN}(100%)${NC}\r"
+	echo -ne "${RED}${LICON}${LICON}${LICON}${LICON}${LICON}${LICON}${LICON}${LICON}${LICON}${LICON}${LICON}${LICON}${LICON}${LICON}${LICON}${LICON}${LICON}${LICON}${LICON}${LICON}${LICON}${LICON}${LICON}${LICON}${LICON}${LICON}${LICON}${LICON}${LICON}${LICON} ${GREEN}(100%)${NC}\r"
 	sleep 1
 	echo -ne '\n'
 	# sleep 10
@@ -123,11 +125,11 @@ EOF
 
 	echo -e "\nReloading Service Daemon\n"
   	systemctl daemon-reload
-	echo -ne "${RED}##### ${GREEN}(33%)${NC}\r"
+	echo -ne "${RED}${LICON}${LICON}${LICON}## ${GREEN}(33%)${NC}\r"
 	sleep 1
-	echo -ne "${RED}############# ${GREEN}(66%)${NC}\r"
+	echo -ne "${RED}${LICON}${LICON}${LICON}${LICON}${LICON}${LICON}${LICON}${LICON}${LICON}${LICON}${LICON}${LICON}# ${GREEN}(66%)${NC}\r"
 	sleep 1
-	echo -ne "${RED}####################### ${GREEN}(100%)${NC}\r"
+	echo -ne "${RED}${LICON}${LICON}${LICON}${LICON}${LICON}${LICON}${LICON}${LICON}${LICON}${LICON}${LICON}${LICON}${LICON}${LICON}${LICON}${LICON}${LICON}${LICON}${LICON}${LICON}${LICON}## ${GREEN}(100%)${NC}\r"
 	sleep 1
 	echo -ne '\n'
     echo -e "${GREEN}* Done${NONE}";
@@ -172,25 +174,25 @@ function create_key() {
   read -e COINKEY
   if [[ -z "$COINKEY" ]]; then
   $COIN_PATH$COIN_DAEMON -daemon
-	echo -ne "${RED}### ${GREEN}(10%)${NC}\r"
+	echo -ne "${RED}${LICON}${LICON}${LICON} ${GREEN}(10%)${NC}\r"
 	sleep 3
-	echo -ne "${RED}###### ${GREEN}(20%)${NC}\r"
+	echo -ne "${RED}${LICON}${LICON}${LICON}${LICON}${LICON}${LICON} ${GREEN}(20%)${NC}\r"
 	sleep 3
-	echo -ne "${RED}######### ${GREEN}(30%)${NC}\r"
+	echo -ne "${RED}${LICON}${LICON}${LICON}${LICON}${LICON}${LICON}${LICON}${LICON}${LICON} ${GREEN}(30%)${NC}\r"
 	sleep 3
-	echo -ne "${RED}############ ${GREEN}(40%)${NC}\r"
+	echo -ne "${RED}${LICON}${LICON}${LICON}${LICON}${LICON}${LICON}${LICON}${LICON}${LICON}${LICON}${LICON}${LICON} ${GREEN}(40%)${NC}\r"
 	sleep 3
-	echo -ne "${RED}############### ${GREEN}(50%)${NC}\r"
+	echo -ne "${RED}${LICON}${LICON}${LICON}${LICON}${LICON}${LICON}${LICON}${LICON}${LICON}${LICON}${LICON}${LICON}${LICON}${LICON}${LICON} ${GREEN}(50%)${NC}\r"
 	sleep 3
-	echo -ne "${RED}################## ${GREEN}(60%)${NC}\r"
+	echo -ne "${RED}${LICON}${LICON}${LICON}${LICON}${LICON}${LICON}${LICON}${LICON}${LICON}${LICON}${LICON}${LICON}${LICON}${LICON}${LICON}${LICON}${LICON}${LICON} ${GREEN}(60%)${NC}\r"
 	sleep 3
-	echo -ne "${RED}##################### ${GREEN}(70%)${NC}\r"
+	echo -ne "${RED}${LICON}${LICON}${LICON}${LICON}${LICON}${LICON}${LICON}${LICON}${LICON}${LICON}${LICON}${LICON}${LICON}${LICON}${LICON}${LICON}${LICON}${LICON}${LICON}${LICON}${LICON} ${GREEN}(70%)${NC}\r"
 	sleep 3
-	echo -ne "${RED}######################## ${GREEN}(80%)${NC}\r"
+	echo -ne "${RED}${LICON}${LICON}${LICON}${LICON}${LICON}${LICON}${LICON}${LICON}${LICON}${LICON}${LICON}${LICON}${LICON}${LICON}${LICON}${LICON}${LICON}${LICON}${LICON}${LICON}${LICON}${LICON}${LICON}${LICON} ${GREEN}(80%)${NC}\r"
 	sleep 3
-	echo -ne "${RED}########################### ${GREEN}(90%)${NC}\r"
+	echo -ne "${RED}${LICON}${LICON}${LICON}${LICON}${LICON}${LICON}${LICON}${LICON}${LICON}${LICON}${LICON}${LICON}${LICON}${LICON}${LICON}${LICON}${LICON}${LICON}${LICON}${LICON}${LICON}${LICON}${LICON}${LICON}${LICON}${LICON}${LICON} ${GREEN}(90%)${NC}\r"
 	sleep 3
-	echo -ne "${RED}############################## ${GREEN}(100%)${NC}\r"
+	echo -ne "${RED}${LICON}${LICON}${LICON}${LICON}${LICON}${LICON}${LICON}${LICON}${LICON}${LICON}${LICON}${LICON}${LICON}${LICON}${LICON}${LICON}${LICON}${LICON}${LICON}${LICON}${LICON}${LICON}${LICON}${LICON}${LICON}${LICON}${LICON}${LICON}${LICON}${LICON} ${GREEN}(100%)${NC}\r"
 	sleep 3
 	echo -ne '\n'
     echo -e "${GREEN}* Done${NONE}";
@@ -203,25 +205,25 @@ function create_key() {
   if [ "$?" -gt "0" ];
     then
     echo -e "${RED}Wallet not fully loaded. Let us wait and try again to generate the ${GREEN}Masternode Private Key${NC}"
-	echo -ne "${RED}### ${GREEN}(10%)${NC}\r"
+	echo -ne "${RED}${LICON}${LICON}${LICON} ${GREEN}(10%)${NC}\r"
 	sleep 3
-	echo -ne "${RED}###### ${GREEN}(20%)${NC}\r"
+	echo -ne "${RED}${LICON}${LICON}${LICON}${LICON}${LICON}${LICON} ${GREEN}(20%)${NC}\r"
 	sleep 3
-	echo -ne "${RED}######### ${GREEN}(30%)${NC}\r"
+	echo -ne "${RED}${LICON}${LICON}${LICON}${LICON}${LICON}${LICON}${LICON}${LICON}${LICON} ${GREEN}(30%)${NC}\r"
 	sleep 3
-	echo -ne "${RED}############ ${GREEN}(40%)${NC}\r"
+	echo -ne "${RED}${LICON}${LICON}${LICON}${LICON}${LICON}${LICON}${LICON}${LICON}${LICON}${LICON}${LICON}${LICON} ${GREEN}(40%)${NC}\r"
 	sleep 3
-	echo -ne "${RED}############### ${GREEN}(50%)${NC}\r"
+	echo -ne "${RED}${LICON}${LICON}${LICON}${LICON}${LICON}${LICON}${LICON}${LICON}${LICON}${LICON}${LICON}${LICON}${LICON}${LICON}${LICON} ${GREEN}(50%)${NC}\r"
 	sleep 3
-	echo -ne "${RED}################## ${GREEN}(60%)${NC}\r"
+	echo -ne "${RED}${LICON}${LICON}${LICON}${LICON}${LICON}${LICON}${LICON}${LICON}${LICON}${LICON}${LICON}${LICON}${LICON}${LICON}${LICON}${LICON}${LICON}${LICON} ${GREEN}(60%)${NC}\r"
 	sleep 3
-	echo -ne "${RED}##################### ${GREEN}(70%)${NC}\r"
+	echo -ne "${RED}${LICON}${LICON}${LICON}${LICON}${LICON}${LICON}${LICON}${LICON}${LICON}${LICON}${LICON}${LICON}${LICON}${LICON}${LICON}${LICON}${LICON}${LICON}${LICON}${LICON}${LICON} ${GREEN}(70%)${NC}\r"
 	sleep 3
-	echo -ne "${RED}######################## ${GREEN}(80%)${NC}\r"
+	echo -ne "${RED}${LICON}${LICON}${LICON}${LICON}${LICON}${LICON}${LICON}${LICON}${LICON}${LICON}${LICON}${LICON}${LICON}${LICON}${LICON}${LICON}${LICON}${LICON}${LICON}${LICON}${LICON}${LICON}${LICON}${LICON} ${GREEN}(80%)${NC}\r"
 	sleep 3
-	echo -ne "${RED}########################### ${GREEN}(90%)${NC}\r"
+	echo -ne "${RED}${LICON}${LICON}${LICON}${LICON}${LICON}${LICON}${LICON}${LICON}${LICON}${LICON}${LICON}${LICON}${LICON}${LICON}${LICON}${LICON}${LICON}${LICON}${LICON}${LICON}${LICON}${LICON}${LICON}${LICON}${LICON}${LICON}${LICON} ${GREEN}(90%)${NC}\r"
 	sleep 3
-	echo -ne "${RED}############################## ${GREEN}(100%)${NC}\r"
+	echo -ne "${RED}${LICON}${LICON}${LICON}${LICON}${LICON}${LICON}${LICON}${LICON}${LICON}${LICON}${LICON}${LICON}${LICON}${LICON}${LICON}${LICON}${LICON}${LICON}${LICON}${LICON}${LICON}${LICON}${LICON}${LICON}${LICON}${LICON}${LICON}${LICON}${LICON}${LICON} ${GREEN}(100%)${NC}\r"
 	sleep 3
 	echo -ne '\n'
     echo -e "${GREEN}* Done${NONE}";
@@ -450,7 +452,7 @@ function setup_node() {
 }
 
 
-##### Main #####
+${LICON}${LICON}${LICON}## Main ${LICON}${LICON}${LICON}##
 clear
 
 purgeOldInstallation
