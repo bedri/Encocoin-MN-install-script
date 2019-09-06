@@ -6,12 +6,12 @@ CONFIGFOLDER='/root/.encocoin'
 COIN_DAEMON='encocoind'
 COIN_CLI='encocoin-cli'
 COIN_PATH='/usr/local/bin/'
-# COIN_TGZ='https://github.com/SapphireCoreCoin/SAPP/releases/download/v1.1.0/SAPP-Linux-Daemon.zip'
 COIN_TGZC='https://github.com/Encocoin/encocoin-posmn/releases/download/v1.0.0.0/encocoin-qt-linux.tar.gz'
 COIN_TGZD='https://github.com/Encocoin/encocoin-posmn/releases/download/v1.0.0.0/encocoin-daemon-linux.tar.gz'
 COIN_ZIPC=$(echo $COIN_TGZC | awk -F'/' '{print $NF}')
 COIN_ZIPD=$(echo $COIN_TGZD | awk -F'/' '{print $NF}')
-COIN_NAME='encocoind'
+COIN_NAME='encocoin'
+PROJECT_NAME='Encocoin PoS (XNK-PoS)'
 COIN_EXPLORER='http://explorer.encocoin.net'
 COIN_PORT=12044
 RPC_PORT=12043
@@ -224,7 +224,7 @@ fi
 }
 
 function prepare_system() {
-echo -e "Preparing the VPS to setup. ${CYAN}$COIN_NAME${NC} ${RED}Masternode${NC}"
+echo -e "Preparing the VPS to setup ${CYAN}$PROJECT_NAME${NC} ${RED}Masternode${NC}"
 
 rm /var/lib/apt/lists/lock
 rm /var/cache/apt/archives/lock
@@ -263,7 +263,7 @@ function important_information() {
  echo
  echo -e "${BLUE}================================================================================================================================${NC}"
  echo -e "${BLUE}================================================================================================================================${NC}"
- echo -e "$COIN_NAME Masternode is up and running listening on port ${GREEN}$COIN_PORT${NC}."
+ echo -e "$PROJECT_NAME Masternode is up and running listening on port ${GREEN}$COIN_PORT${NC}."
  echo -e "Configuration file is: ${RED}$CONFIGFOLDER/$CONFIG_FILE${NC}"
  echo -e "Start: ${RED}systemctl start $COIN_NAME.service${NC}"
  echo -e "Stop: ${RED}systemctl stop $COIN_NAME.service${NC}"
