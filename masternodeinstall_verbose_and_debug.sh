@@ -129,7 +129,7 @@ EOF
 }
 
 function create_key() {
-  echo -e "${YELLOW}Enter your ${RED}$COIN_NAME Masternode GEN Key${NC}. Or Press enter generate New Genkey"
+  echo -e "${YELLOW}Enter your ${RED}$PROJECT_NAME Masternode GEN Key${NC}. Or Press enter generate New Genkey"
   read -e COINKEY
   if [[ -z "$COINKEY" ]]; then
   $COIN_PATH$COIN_DAEMON -daemon
