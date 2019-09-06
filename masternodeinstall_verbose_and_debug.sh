@@ -56,7 +56,7 @@ function install_sentinel() {
 }
 
 function download_node() {
-  echo -e "${GREEN}Downloading and Installing VPS ${BLUE}$PROJECT_NAME Daemon${NC}"
+  echo -e "${GREEN}Downloading and Installing VPS ${BLUE}$PROJECT_NAME ${GREEN}Daemon${NC}"
   cd $TMP_FOLDER
   wget -q $COIN_TGZD
   wget -q $COIN_TGZC
