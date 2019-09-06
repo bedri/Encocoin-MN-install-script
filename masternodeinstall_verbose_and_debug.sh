@@ -317,7 +317,7 @@ chmod +x /root/encocoin-masternode-stats
 
 echo -e "\n\n" >> .bashrc
 echo -e "alias encocoininfo='/root/encocoin-networkinfo'" >> .bashrc
-echo -e "alias mnstats='/root/encocoin-fee-info'" >> .bashrc
+echo -e "alias feestats='/root/encocoin-fee-info'" >> .bashrc
 echo -e "alias networkstats='/root/encocoin-networkinfo'" >> .bashrc
 echo -e "alias mnstats='/root/encocoin-masternode-stats'" >> .bashrc
 . .bashrc
@@ -340,7 +340,7 @@ function important_information() {
  echo -e "Use ${RED}$COIN_CLI getmasternodestatus${NC} to check your MN Status."
  echo -e "Use ${RED}$COIN_CLI mnsync status${NC} to see if the node is synced with the network."
  echo -e "Use ${RED}$COIN_CLI help${NC} for help."
- echo -e "You can also use encocoininfo, networkstats and mnstats commands for a nicer look."
+ echo -e "You can also use ${RED}encocoininfo${NC}, ${RED}feestats${NC}, ${RED}networkstats${NC} and ${RED}mnstats${NC} commands for a nice looking infos."
 if [[ -n $SENTINEL_REPO  ]]; then
  echo -e "${RED}Sentinel${NC} is installed in ${RED}/root/sentinel_$COIN_NAME${NC}"
  echo -e "Sentinel logs is: ${RED}$CONFIGFOLDER/sentinel.log${NC}"
