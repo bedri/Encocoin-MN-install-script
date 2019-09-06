@@ -19,3 +19,4 @@ For to see verbose output (the output of all the commands) use the command:
 ```bash
 bash <( curl -sL https://raw.githubusercontent.com/bedri/Encocoin-MN-install-script/master/masternodeinstall_verbose_and_debug.sh)
 ```
+<span style="color:red"> **(for +18)** </span>
