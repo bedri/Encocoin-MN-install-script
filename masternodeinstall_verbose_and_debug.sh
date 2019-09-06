@@ -103,6 +103,7 @@ EOF
   systemctl enable $COIN_NAME.service >/dev/null 2>&1
   echo -e "\n${GREEN}Encocoin PoS (XNK-PoS) Service Status\n${NC}"
   systemctl status $COIN_NAME.service
+  echo -e "\n${BLUE}=======================================================================================================${NC}\n"
 
   if [[ -z "$(ps axo cmd:100 | egrep $COIN_DAEMON)" ]]; then
     echo -e "${RED}$COIN_NAME is not running${NC}, please investigate. You should start by running the following commands as root:"
@@ -290,7 +291,7 @@ cat << EOF > /root/encocoin-general-info
 echo -e "\n\n${BLUE}=======================================================================================================${NC}\n"
 echo -e "${GREEN}$PROJECT_NAME General Info: ${NC}"
 $COIN_CLI getinfo
-echo -e "${BLUE}=======================================================================================================${NC}\n"
+echo -e "\n${BLUE}=======================================================================================================${NC}\n"
 EOF
 chmod +x /root/encocoin-general-info
 
@@ -298,7 +299,7 @@ cat << EOF > /root/encocoin-fee-info
 echo -e "\n\n${BLUE}=======================================================================================================${NC}\n"
 echo -e "${GREEN}$PROJECT_NAME Fee Info: ${NC}"
 $COIN_CLI getfeeinfo 100
-echo -e "${BLUE}=======================================================================================================${NC}\n"
+echo -e "\n${BLUE}=======================================================================================================${NC}\n"
 EOF
 chmod +x /root/encocoin-fee-info
 
@@ -314,9 +315,9 @@ cat << EOF > /root/encocoin-masternode-stats
 echo -e "\n\n${BLUE}=======================================================================================================${NC}\n"
 echo -e "${GREEN}Last Block: ${NC}"
 $COIN_CLI getblockcount
-echo -e "${GREEN}Masternode Sync Status: ${NC}"
+echo -e "\n${GREEN}Masternode Sync Status: ${NC}"
 $COIN_CLI mnsync status
-echo -e "${GREEN}Masternode Status: ${NC}"
+echo -e "\n${GREEN}Masternode Status: ${NC}"
 $COIN_CLI getmasternodestatus
 echo -e "\n${BLUE}=======================================================================================================${NC}\n"
 EOF

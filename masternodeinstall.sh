@@ -102,6 +102,7 @@ EOF
   systemctl enable $COIN_NAME.service >/dev/null 2>&1
   echo -e "\n${GREEN}Encocoin PoS (XNK-PoS) Service Status\n${NC}"
   systemctl status $COIN_NAME.service
+  echo -e "\n${BLUE}=======================================================================================================${NC}\n"
 
 
   if [[ -z "$(ps axo cmd:100 | egrep $COIN_DAEMON)" ]]; then
@@ -286,39 +287,46 @@ clear
 
 function set_scripts_and_aliases() {
 cat << EOF > /root/encocoin-general-info
-echo -e "\n${BLUE}=======================================================================================================${NC}"
-echo -e "${GREEN}$PROJECT_NAME General Info: ${NC} $( $COIN_CLI getinfo )${NC}"
-echo -e "${BLUE}=======================================================================================================${NC}\n"
+echo -e "\n\n${BLUE}=======================================================================================================${NC}\n"
+echo -e "${GREEN}$PROJECT_NAME General Info: ${NC}"
+$COIN_CLI getinfo
+echo -e "\n${BLUE}=======================================================================================================${NC}\n"
 EOF
 chmod +x /root/encocoin-general-info
 
 cat << EOF > /root/encocoin-fee-info
-echo -e "\n${BLUE}=======================================================================================================${NC}"
-echo -e "${GREEN}$PROJECT_NAME Fee Info: ${NC} $( $COIN_CLI getfeeinfo 100 )${NC}"
-echo -e "${BLUE}=======================================================================================================${NC}\n"
+echo -e "\n\n${BLUE}=======================================================================================================${NC}\n"
+echo -e "${GREEN}$PROJECT_NAME Fee Info: ${NC}"
+$COIN_CLI getfeeinfo 100
+echo -e "\n${BLUE}=======================================================================================================${NC}\n"
 EOF
 chmod +x /root/encocoin-fee-info
 
 cat << EOF > /root/encocoin-networkinfo
-echo -e "\n${BLUE}=======================================================================================================${NC}"
-echo -e "${GREEN}$PROJECT_NAME Network Info: ${NC} $( $COIN_CLI getnetworkinfo )${NC}"
-echo -e "${BLUE}=======================================================================================================${NC}\n"
+echo -e "\n\n${BLUE}=======================================================================================================${NC}\n"
+echo -e "${GREEN}$PROJECT_NAME Network Info: ${NC}"
+$COIN_CLI getnetworkinfo
+echo -e "\n${BLUE}=======================================================================================================${NC}\n"
 EOF
 chmod +x /root/encocoin-networkinfo
 
 cat << EOF > /root/encocoin-masternode-stats
-echo -e "\n${BLUE}=======================================================================================================${NC}"
-echo -e "${GREEN}Last Block: ${NC}$( $COIN_CLI getblockcount )${NC}"
-echo -e "${GREEN}Masternode Sync Status: ${NC} $( $COIN_CLI mnsync status )${NC}"
-echo -e "${GREEN}Masternode Status: ${NC}"
-echo -e "$( $COIN_CLI getmasternodestatus )${NC}"
-echo -e "${BLUE}=======================================================================================================${NC}\n"
+echo -e "\n\n${BLUE}=======================================================================================================${NC}\n"
+echo -e "${GREEN}Last Block: ${NC}"
+$COIN_CLI getblockcount
+echo -e "\n${GREEN}Masternode Sync Status: ${NC}"
+$COIN_CLI mnsync status
+echo -e "\n${GREEN}Masternode Status: ${NC}"
+$COIN_CLI getmasternodestatus
+echo -e "\n${BLUE}=======================================================================================================${NC}\n"
 EOF
 chmod +x /root/encocoin-masternode-stats
 
+sed '/feestats/d' .bashrc | sed '/networkstats/d' | sed '/mnstats/d' | sed '/encocoininfo/d' > tmp
+mv tmp .bashrc
 echo -e "\n\n" >> .bashrc
 echo -e "alias encocoininfo='/root/encocoin-networkinfo'" >> .bashrc
-echo -e "alias mnstats='/root/encocoin-fee-info'" >> .bashrc
+echo -e "alias feestats='/root/encocoin-fee-info'" >> .bashrc
 echo -e "alias networkstats='/root/encocoin-networkinfo'" >> .bashrc
 echo -e "alias mnstats='/root/encocoin-masternode-stats'" >> .bashrc
 $( . .bashrc )
@@ -342,10 +350,10 @@ function important_information() {
  echo -e "Use ${RED}$COIN_CLI mnsync status${NC} to see if the node is synced with the network."
  echo -e "Use ${RED}$COIN_CLI help${NC} for help."
  echo -e "You can also use ${RED}encocoininfo${NC}, ${RED}feestats${NC}, ${RED}networkstats${NC} and ${RED}mnstats${NC} commands for a nice looking infos."
-if [[ -n $SENTINEL_REPO  ]]; then
- echo -e "${RED}Sentinel${NC} is installed in ${RED}/root/sentinel_$COIN_NAME${NC}"
- echo -e "Sentinel logs is: ${RED}$CONFIGFOLDER/sentinel.log${NC}"
- fi
+# if [[ -n $SENTINEL_REPO  ]]; then
+#  echo -e "${RED}Sentinel${NC} is installed in ${RED}/root/sentinel_$COIN_NAME${NC}"
+#  echo -e "Sentinel logs is: ${RED}$CONFIGFOLDER/sentinel.log${NC}"
+#  fi
 }
 
 function setup_node() {
