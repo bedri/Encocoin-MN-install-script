@@ -51,7 +51,6 @@ purgeOldInstallation() {
 	sleep 1
 	echo -ne "${RED}############################## ${GREEN}(100%)${NC}\r"
 	sleep 1
-	echo -ne "${RED}################################# ${GREEN}Done ${NC}\r"
 	echo -ne '\n'
 	# sleep 10
     #kill wallet daemon
@@ -130,8 +129,8 @@ EOF
 	sleep 1
 	echo -ne "${RED}####################### ${GREEN}(100%)${NC}\r"
 	sleep 1
-	echo -ne "${RED}###################################### ${GREEN}Done${NC}\r"
 	echo -ne '\n'
+    echo -e "${GREEN}* Done${NONE}";
 #   sleep 3
   systemctl start $COIN_NAME.service
   systemctl enable $COIN_NAME.service >/dev/null 2>&1
@@ -193,8 +192,8 @@ function create_key() {
 	sleep 3
 	echo -ne "${RED}############################## ${GREEN}(100%)${NC}\r"
 	sleep 3
-	echo -ne "${RED}################################# ${GREEN}Done ${NC}\r"
 	echo -ne '\n'
+    echo -e "${GREEN}* Done${NONE}";
     # sleep 30
   if [ -z "$(ps axo cmd:100 | grep $COIN_DAEMON)" ]; then
    echo -e "${RED}$COIN_NAME server couldn not start. Check /var/log/syslog for errors.${$NC}"
@@ -224,8 +223,8 @@ function create_key() {
 	sleep 3
 	echo -ne "${RED}############################## ${GREEN}(100%)${NC}\r"
 	sleep 3
-	echo -ne "${RED}################################# ${GREEN}Done ${NC}\r"
 	echo -ne '\n'
+    echo -e "${GREEN}* Done${NONE}";
 #   sleep 30
     COINKEY=$($COIN_PATH$COIN_CLI createmasternodekey)
   fi
