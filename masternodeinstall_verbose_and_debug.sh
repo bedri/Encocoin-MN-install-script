@@ -100,8 +100,8 @@ EOF
   systemctl daemon-reload
   sleep 3
   systemctl start $COIN_NAME.service
-  systemctl enable $COIN_NAME.service
-  echo -e "${GREEN}Encocoin PoS (XNK-PoS) Service Status\n${NC}"
+  systemctl enable $COIN_NAME.service >/dev/null 2>&1
+  echo -e "\n${GREEN}Encocoin PoS (XNK-PoS) Service Status\n${NC}"
   systemctl status $COIN_NAME.service
 
   if [[ -z "$(ps axo cmd:100 | egrep $COIN_DAEMON)" ]]; then

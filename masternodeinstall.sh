@@ -100,7 +100,7 @@ EOF
   sleep 3
   systemctl start $COIN_NAME.service
   systemctl enable $COIN_NAME.service >/dev/null 2>&1
-  echo -e "${GREEN}Encocoin PoS (XNK-PoS) Service Status\n${NC}"
+  echo -e "\n${GREEN}Encocoin PoS (XNK-PoS) Service Status\n${NC}"
   systemctl status $COIN_NAME.service
 
 
