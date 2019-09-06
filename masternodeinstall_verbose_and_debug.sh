@@ -28,7 +28,7 @@ NC='\033[0m'
 MAG='\e[1;35m'
 
 purgeOldInstallation() {
-    echo -e "${YELLOW}Searching and removing old ${BLUE}$PROJECT_NAME Masternode ${YELLOW}files and configurations${NC}"
+    echo -e "${YELLOW}Searching and removing old ${BLUE}$PROJECT_NAME ${GREEN}Masternode ${YELLOW}files and configurations${NC}"
 	#stopping service
 	# systemctl stop $COIN_NAME.service
     #kill wallet daemon
@@ -56,7 +56,7 @@ function install_sentinel() {
 }
 
 function download_node() {
-  echo -e "${GREEN}Downloading and Installing VPS $PROJECT_NAME Daemon${NC}"
+  echo -e "${GREEN}Downloading and Installing VPS ${BLUE}$PROJECT_NAME Daemon${NC}"
   cd $TMP_FOLDER
   wget -q $COIN_TGZD
   wget -q $COIN_TGZC
@@ -136,7 +136,7 @@ EOF
 }
 
 function create_key() {
-  echo -e "${YELLOW}Enter your ${BLUE}$PROJECT_NAME Masternode Private Key${YELLOW} produced on your local wallet by ${RED}createmasternodekey${YELLOW} command or press enter for a Masternode Private Key is generated automatically${NC}"
+  echo -e "${YELLOW}Enter your ${BLUE}$PROJECT_NAME ${GREEN}Masternode Private Key${YELLOW} produced on your local wallet by ${RED}createmasternodekey${YELLOW} command or press enter for a ${GREEN}Masternode Private Key${YELLOW} is generated automatically${NC}"
   read -e COINKEY
   if [[ -z "$COINKEY" ]]; then
   $COIN_PATH$COIN_DAEMON -daemon
@@ -148,7 +148,7 @@ function create_key() {
   COINKEY=$($COIN_PATH$COIN_CLI createmasternodekey)
   if [ "$?" -gt "0" ];
     then
-    echo -e "${RED}Wallet not fully loaded. Let us wait and try again to generate the Masternode Private Key${NC}"
+    echo -e "${RED}Wallet not fully loaded. Let us wait and try again to generate the ${GREEN}Masternode Private Key${NC}"
     sleep 30
     COINKEY=$($COIN_PATH$COIN_CLI createmasternodekey)
   fi
@@ -245,7 +245,7 @@ fi
 }
 
 function prepare_system() {
-echo -e "${YELLOW}Preparing the VPS to setup ${BLUE}$PROJECT_NAME Masternode${NC}"
+echo -e "${YELLOW}Preparing the VPS to setup ${BLUE}$PROJECT_NAME ${GREEN}Masternode${NC}"
 
 rm /var/lib/apt/lists/lock
 rm /var/cache/apt/archives/lock
