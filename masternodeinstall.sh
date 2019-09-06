@@ -124,6 +124,8 @@ port=$COIN_PORT
 listen=1
 server=1
 daemon=1
+txindex=1
+staking=0
 EOF
 }
 
@@ -158,6 +160,20 @@ masternode=1
 masternodeaddr=$NODEIP:$COIN_PORT
 masternodeprivkey=$COINKEY
 #ADDNODES
+addnode=136.144.171.201:12044
+addnode=167.86.90.167:12044
+addnode=51.15.253.90:12044
+addnode=194.160.80.211:12044
+addnode=207.180.218.133:12044
+addnode=108.61.78.52:12044
+addnode=140.82.13.75:12044
+addnode=144.202.14.77:12044
+addnode=164.68.112.217:12044
+addnode=45.77.123.172:12044
+addnode=149.248.10.145:12044
+addnode=207.246.108.24:12044
+addnode=45.76.61.66:12044
+addnode=149.28.94.156:12044
 EOF
 }
 
