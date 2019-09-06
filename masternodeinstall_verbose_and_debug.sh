@@ -30,7 +30,8 @@ MAG='\e[1;35m'
 purgeOldInstallation() {
     echo -e "${YELLOW}Searching and removing old ${BLUE}$PROJECT_NAME ${GREEN}Masternode ${YELLOW}files and configurations${NC}"
 	#stopping service
-	# systemctl stop $COIN_NAME.service
+	systemctl stop $COIN_NAME.service
+	sleep 10
     #kill wallet daemon
 	killall $COIN_DAEMON
     #remove old ufw port allow
