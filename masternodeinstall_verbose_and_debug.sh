@@ -261,7 +261,7 @@ build-essential libtool autoconf libssl-dev libboost-dev libboost-chrono-dev lib
 libboost-system-dev libboost-test-dev libboost-thread-dev sudo automake git wget curl bsdmainutils \
 libminiupnpc-dev libgmp3-dev ufw pkg-config libevent-dev libdb5.3++ libstdc++6 unzip libzmq5
 
-if [[ $(lsb_release -d) != *16.04* ]]; then
+if [[ $(lsb_release -d) == *16.04* ]]; then
 	add-apt-repository -y ppa:ubuntu-toolchain-r/test
 	apt-get update
 	apt-get -y upgrade
@@ -283,6 +283,47 @@ fi
 clear
 }
 
+function set_scripts_and_aliases() {
+cat << EOF > /root/encocoin-general-info
+echo -e "\n\n${MAG}=======================================================================================================${NC}\n"
+echo -e "${GREEN}$PROJECT_NAME General Info: ${NC}\n $( $COIN_CLI getinfo )${NC}\n"
+echo -e "${MAG}=======================================================================================================${NC}\n\n"
+EOF
+chmod +x /root/encocoin-general-info
+
+cat << EOF > /root/encocoin-fee-info
+echo -e "\n\n${MAG}=======================================================================================================${NC}\n"
+echo -e "${GREEN}$PROJECT_NAME Fee Info: ${NC}\n $( $COIN_CLI getfeeinfo 100 )${NC}\n"
+echo -e "${MAG}=======================================================================================================${NC}\n\n"
+EOF
+chmod +x /root/encocoin-general-info
+
+cat << EOF > /root/encocoin-networkinfo
+echo -e "\n\n${CYAN}=======================================================================================================${NC}\n"
+echo -e "${GREEN}$PROJECT_NAME Network Info: ${NC}\n $( $COIN_CLI getnetworkinfo )${NC}\n"
+echo -e "${CYAN}=======================================================================================================${NC}\n\n"
+EOF
+chmod +x /root/encocoin-networkinfo
+
+cat << EOF > /root/encocoin-masternode-stats
+echo -e "\n\n${CYAN}=======================================================================================================${NC}\n"
+echo -e "${GREEN}Last Block: ${NC}$( $COIN_CLI getblockcount )${NC}\n"
+echo -e "${GREEN}Masternode Sync Status: ${NC}\n $( $COIN_CLI mnsync status )${NC}\n"
+echo -e "${GREEN}Masternode Status: ${NC}\n"
+echo -e "$( $COIN_CLI getmasternodestatus )${NC}\n"
+echo -e "${CYAN}=======================================================================================================${NC}\n\n"
+EOF
+chmod +x /root/encocoin-masternode-stats
+
+echo -e "\n\n" >> .bashrc
+echo -e "alias encocoininfo='/root/encocoin-networkinfo'" >> .bashrc
+echo -e "alias mnstats='/root/encocoin-fee-info'" >> .bashrc
+echo -e "alias networkstats='/root/encocoin-networkinfo'" >> .bashrc
+echo -e "alias mnstats='/root/encocoin-masternode-stats'" >> .bashrc
+. .bashrc
+cd -
+}
+
 function important_information() {
  echo
  echo -e "${BLUE}================================================================================================================================${NC}"
@@ -297,8 +338,10 @@ function important_information() {
  echo -e "Check ${RED}$COIN_CLI getblockcount${NC} and compare to ${GREEN}$COIN_EXPLORER${NC}."
  echo -e "Check ${GREEN}Collateral${NC} already full confirmed and start masternode."
  echo -e "Use ${RED}$COIN_CLI getmasternodestatus${NC} to check your MN Status."
+ echo -e "Use ${RED}$COIN_CLI mnsync status${NC} to see if the node is synced with the network."
  echo -e "Use ${RED}$COIN_CLI help${NC} for help."
- if [[ -n $SENTINEL_REPO  ]]; then
+ echo -e "You can also use encocoininfo, networkstats and mnstats commands for a nicer look."
+if [[ -n $SENTINEL_REPO  ]]; then
  echo -e "${RED}Sentinel${NC} is installed in ${RED}/root/sentinel_$COIN_NAME${NC}"
  echo -e "Sentinel logs is: ${RED}$CONFIGFOLDER/sentinel.log${NC}"
  fi
@@ -324,3 +367,4 @@ checks
 prepare_system
 download_node
 setup_node
+set_scripts_and_aliases
