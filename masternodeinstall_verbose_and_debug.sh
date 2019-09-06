@@ -131,7 +131,7 @@ EOF
 }
 
 function create_key() {
-  echo -e "${YELLOW}Enter your ${RED}$PROJECT_NAME Masternode Private Key produced on your local wallet by 'createmasternodekey' command${NC} or Press enter generate Masternode Private New"
+  echo -e "${YELLOW}Enter your ${RED}$PROJECT_NAME Masternode Private Key${NC} produced on your local wallet by ${RED}createmasternodekey${NC} command${NC} or press enter for a Masternode Private Key is generated automatically"
   read -e COINKEY
   if [[ -z "$COINKEY" ]]; then
   $COIN_PATH$COIN_DAEMON -daemon
