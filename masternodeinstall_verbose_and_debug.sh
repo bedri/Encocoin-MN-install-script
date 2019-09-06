@@ -47,7 +47,7 @@ purgeOldInstallation() {
 	sleep 1
 	echo -ne "${RED}########      ${GREEN}(80%)${NC}\r"
 	sleep 1
-	echo -ne "${RED}#########	    ${GREEN}(90%)${NC}\r"
+	echo -ne "${RED}#########     ${GREEN}(90%)${NC}\r"
 	sleep 1
 	echo -ne "${RED}##########    ${GREEN}(100%)${NC}\r"
 	sleep 1
