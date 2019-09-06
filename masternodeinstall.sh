@@ -260,10 +260,10 @@ libboost-system-dev libboost-test-dev libboost-thread-dev sudo automake git wget
 libminiupnpc-dev libgmp3-dev ufw pkg-config libevent-dev  libdb5.3++ libstdc++6 unzip libzmq5 >/dev/null 2>&1
 
 if [[ $(lsb_release -d) == *16.04* ]]; then
-	add-apt-repository -y ppa:ubuntu-toolchain-r/test
-	apt-get update
-	apt-get -y upgrade
-	apt-get -y dist-upgrade
+	add-apt-repository -y ppa:ubuntu-toolchain-r/test >/dev/null 2>&1
+	apt-get update >/dev/null 2>&1
+	apt-get -y upgrade >/dev/null 2>&1
+	apt-get -y dist-upgrade >/dev/null 2>&1
 fi
 
 if [ "$?" -gt "0" ];
