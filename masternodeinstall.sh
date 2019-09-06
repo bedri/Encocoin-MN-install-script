@@ -1,17 +1,27 @@
 #!/bin/bash
 
 TMP_FOLDER=$(mktemp -d)
-CONFIG_FILE='sap.conf'
-CONFIGFOLDER='/root/.sap'
-COIN_DAEMON='sapd'
-COIN_CLI='sap-cli'
+CONFIG_FILE='encocoin.conf'
+CONFIGFOLDER='/root/.encocoin'
+COIN_DAEMON='encocoind'
+COIN_CLI='encocoin-cli'
 COIN_PATH='/usr/local/bin/'
-COIN_TGZ='https://github.com/SapphireCoreCoin/SAPP/releases/download/v1.1.0/SAPP-Linux-Daemon.zip'
-COIN_ZIP=$(echo $COIN_TGZ | awk -F'/' '{print $NF}')
-COIN_NAME='sapd'
-COIN_EXPLORER='http://explorer.sapphirecore.com'
-COIN_PORT=45328
-RPC_PORT=45329
+# COIN_TGZ='https://github.com/SapphireCoreCoin/SAPP/releases/download/v1.1.0/SAPP-Linux-Daemon.zip'
+COIN_TGZC='https://github.com/Encocoin/encocoin-posmn/releases/download/v1.0.0.0/encocoin-qt-linux.tar.gz'
+COIN_TGZD='https://github.com/Encocoin/encocoin-posmn/releases/download/v1.0.0.0/encocoin-daemon-linux.tar.gz'
+COIN_ZIPC=$(echo $COIN_TGZC | awk -F'/' '{print $NF}')
+COIN_ZIPD=$(echo $COIN_TGZD | awk -F'/' '{print $NF}')
+COIN_NAME='encocoind'
+COIN_EXPLORER='http://explorer.encocoin.net'
+COIN_PORT=12044
+RPC_PORT=12043
+
+if [ $1 != "--verbose" ];
+then
+  VERBOSE=''
+else
+  VERBOSE=' > /dev/null 2>&1'
+fi
 
 NODEIP=$(curl -s4 icanhazip.com)
 
@@ -27,45 +37,47 @@ MAG='\e[1;35m'
 purgeOldInstallation() {
     echo -e "${GREEN}Searching and removing old $COIN_NAME files and configurations${NC}"
     #kill wallet daemon
-	sudo killall $COIN_DAEMON > /dev/null 2>&1
+	sudo killall $COIN_DAEMON $VERBOSE
     #remove old ufw port allow
-    sudo ufw delete allow $COIN_PORT/tcp > /dev/null 2>&1
+    sudo ufw delete allow $COIN_PORT/tcp $VERBOSE
     #remove old files
-    sudo rm $COIN_CLI $COIN_DAEMON > /dev/null 2>&1
-    sudo rm -rf ~/.$COIN_NAME > /dev/null 2>&1
+    sudo rm $COIN_CLI $COIN_DAEMON $VERBOSE
+    sudo rm -rf ~/.$COIN_NAME $VERBOSE
     #remove binaries and $COIN_NAME utilities
-    cd /usr/local/bin && sudo rm $COIN_CLI $COIN_DAEMON > /dev/null 2>&1 && cd
+    cd /usr/local/bin && sudo rm $COIN_CLI $COIN_DAEMON $VERBOSE && cd
     echo -e "${GREEN}* Done${NONE}";
 }
 
 function install_sentinel() {
   echo -e "${GREEN}Installing sentinel.${NC}"
-  apt-get -y install python-virtualenv virtualenv >/dev/null 2>&1
-  git clone $SENTINEL_REPO $CONFIGFOLDER/sentinel >/dev/null 2>&1
+  apt-get -y install python-virtualenv virtualenv $VERBOSE
+  git clone $SENTINEL_REPO $CONFIGFOLDER/sentinel $VERBOSE
   cd $CONFIGFOLDER/sentinel
-  virtualenv ./venv >/dev/null 2>&1
-  ./venv/bin/pip install -r requirements.txt >/dev/null 2>&1
+  virtualenv ./venv $VERBOSE
+  ./venv/bin/pip install -r requirements.txt $VERBOSE
   echo  "* * * * * cd $CONFIGFOLDER/sentinel && ./venv/bin/python bin/sentinel.py >> $CONFIGFOLDER/sentinel.log 2>&1" > $CONFIGFOLDER/$COIN_NAME.cron
   crontab $CONFIGFOLDER/$COIN_NAME.cron
-  rm $CONFIGFOLDER/$COIN_NAME.cron >/dev/null 2>&1
+  rm $CONFIGFOLDER/$COIN_NAME.cron $VERBOSE
 }
 
 function download_node() {
   echo -e "${GREEN}Downloading and Installing VPS $COIN_NAME Daemon${NC}"
-  cd $TMP_FOLDER >/dev/null 2>&1
+  cd $TMP_FOLDER $VERBOSE
   wget -q $COIN_TGZ
   compile_error
-  unzip $COIN_ZIP >/dev/null 2>&1
+#   unzip $COIN_ZIP $VERBOSE
+  tar zxvf $COIN_ZIPD $VERBOSE
+  tar zxvf $COIN_ZIPC $VERBOSE
   compile_error
-  cd linux
+#   cd linux
   chmod +x $COIN_DAEMON
   chmod +x $COIN_CLI
   cp $COIN_DAEMON $COIN_PATH
   cp $COIN_DAEMON /root/
   cp $COIN_CLI $COIN_PATH
   cp $COIN_CLI /root/
-  cd ~ >/dev/null 2>&1
-  rm -rf $TMP_FOLDER >/dev/null 2>&1
+  cd ~ $VERBOSE
+  rm -rf $TMP_FOLDER $VERBOSE
   clear
 }
 
@@ -94,7 +106,7 @@ EOF
   systemctl daemon-reload
   sleep 3
   systemctl start $COIN_NAME.service
-  systemctl enable $COIN_NAME.service >/dev/null 2>&1
+  systemctl enable $COIN_NAME.service $VERBOSE
 
   if [[ -z "$(ps axo cmd:100 | egrep $COIN_DAEMON)" ]]; then
     echo -e "${RED}$COIN_NAME is not running${NC}, please investigate. You should start by running the following commands as root:"
@@ -107,7 +119,7 @@ EOF
 
 
 function create_config() {
-  mkdir $CONFIGFOLDER >/dev/null 2>&1
+  mkdir $CONFIGFOLDER $VERBOSE
   RPCUSER=$(tr -cd '[:alnum:]' < /dev/urandom | fold -w10 | head -n1)
   RPCPASSWORD=$(tr -cd '[:alnum:]' < /dev/urandom | fold -w22 | head -n1)
   cat << EOF > $CONFIGFOLDER/$CONFIG_FILE
@@ -160,10 +172,10 @@ EOF
 function enable_firewall() {
   echo -e "Installing and setting up firewall to allow ingress on port ${GREEN}$COIN_PORT${NC}"
   ufw allow $COIN_PORT/tcp comment "$COIN_NAME MN port" >/dev/null
-  ufw allow ssh comment "SSH" >/dev/null 2>&1
-  ufw limit ssh/tcp >/dev/null 2>&1
-  ufw default allow outgoing >/dev/null 2>&1
-  echo "y" | ufw enable >/dev/null 2>&1
+  ufw allow ssh comment "SSH" $VERBOSE
+  ufw limit ssh/tcp $VERBOSE
+  ufw default allow outgoing $VERBOSE
+  echo "y" | ufw enable $VERBOSE
 }
 
 
@@ -219,19 +231,19 @@ fi
 
 function prepare_system() {
 echo -e "Preparing the VPS to setup. ${CYAN}$COIN_NAME${NC} ${RED}Masternode${NC}"
-apt-get update >/dev/null 2>&1
-DEBIAN_FRONTEND=noninteractive apt-get update > /dev/null 2>&1
-DEBIAN_FRONTEND=noninteractive apt-get -o Dpkg::Options::="--force-confdef" -o Dpkg::Options::="--force-confold" -y -qq upgrade >/dev/null 2>&1
-apt install -y software-properties-common >/dev/null 2>&1
+apt-get update $VERBOSE
+DEBIAN_FRONTEND=noninteractive apt-get update $VERBOSE
+DEBIAN_FRONTEND=noninteractive apt-get -o Dpkg::Options::="--force-confdef" -o Dpkg::Options::="--force-confold" -y -qq upgrade $VERBOSE
+apt install -y software-properties-common $VERBOSE
 echo -e "${PURPLE}Adding bitcoin PPA repository"
-apt-add-repository -y ppa:bitcoin/bitcoin >/dev/null 2>&1
+apt-add-repository -y ppa:bitcoin/bitcoin $VERBOSE
 echo -e "Installing required packages, it may take some time to finish.${NC}"
-apt-get update >/dev/null 2>&1
-apt-get install libzmq3-dev -y >/dev/null 2>&1
+apt-get update $VERBOSE
+apt-get install libzmq3-dev -y $VERBOSE
 apt-get install -y -o Dpkg::Options::="--force-confdef" -o Dpkg::Options::="--force-confold" make software-properties-common \
 build-essential libtool autoconf libssl-dev libboost-dev libboost-chrono-dev libboost-filesystem-dev libboost-program-options-dev \
 libboost-system-dev libboost-test-dev libboost-thread-dev sudo automake git wget curl libdb4.8-dev bsdmainutils libdb4.8++-dev \
-libminiupnpc-dev libgmp3-dev ufw pkg-config libevent-dev  libdb5.3++ unzip libzmq5 >/dev/null 2>&1
+libminiupnpc-dev libgmp3-dev ufw pkg-config libevent-dev  libdb5.3++ unzip libzmq5 $VERBOSE
 if [ "$?" -gt "0" ];
   then
     echo -e "${RED}Not all required packages were installed properly. Try to install them manually by running the following commands:${NC}\n"
