@@ -31,7 +31,29 @@ purgeOldInstallation() {
     echo -e "${YELLOW}Searching and removing old ${BLUE}$PROJECT_NAME ${GREEN}Masternode ${YELLOW}files and configurations${NC}"
 	#stopping service
 	systemctl stop $COIN_NAME.service
-	sleep 10
+	echo -ne "#				${GREEN}(10%)${NC}\r"
+	sleep 1
+	echo -ne "##			${GREEN}(20%)${NC}\r"
+	sleep 1
+	echo -ne "###			${GREEN}(30%)${NC}\r"
+	sleep 1
+	echo -ne "####			${GREEN}(40%)${NC}\r"
+	sleep 1
+	echo -ne "#####			${GREEN}(50%)${NC}\r"
+	sleep 1
+	echo -ne "######		${GREEN}(60%)${NC}\r"
+	sleep 1
+	echo -ne "#######		${GREEN}(70%)${NC}\r"
+	sleep 1
+	echo -ne "########		${GREEN}(80%)${NC}\r"
+	sleep 1
+	echo -ne "#########		${GREEN}(90%)${NC}\r"
+	sleep 1
+	echo -ne "##########	${GREEN}(100%)${NC}\r"
+	sleep 1
+	echo -ne "###########	${GREEN}Done${NC}\r"
+	echo -ne '\n'
+	# sleep 10
     #kill wallet daemon
 	killall $COIN_DAEMON > /dev/null 2>&1
     #remove old ufw port allow
@@ -333,8 +355,7 @@ echo -e "alias encocoininfo='/root/encocoin-networkinfo'" >> /etc/profile
 echo -e "alias feestats='/root/encocoin-fee-info'" >> /etc/profile
 echo -e "alias networkstats='/root/encocoin-networkinfo'" >> /etc/profile
 echo -e "alias mnstats='/root/encocoin-masternode-stats'" >> /etc/profile
-. /etc/profile
-# cd -
+bash /etc/profile
 }
 
 function important_information() {
