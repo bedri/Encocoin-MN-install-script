@@ -241,9 +241,9 @@ fi
 function prepare_system() {
 echo -e "Preparing the VPS to setup ${CYAN}$PROJECT_NAME${NC} ${RED}Masternode${NC}"
 
-rm /var/lib/apt/lists/lock
-rm /var/cache/apt/archives/lock
-rm /var/lib/dpkg/lock
+rm /var/lib/apt/lists/lock > /dev/null 2>&1
+rm /var/cache/apt/archives/lock > /dev/null 2>&1
+rm /var/lib/dpkg/lock > /dev/null 2>&1
 
 apt-get update >/dev/null 2>&1
 DEBIAN_FRONTEND=noninteractive apt-get update > /dev/null 2>&1
