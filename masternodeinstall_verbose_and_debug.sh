@@ -287,36 +287,38 @@ clear
 
 function set_scripts_and_aliases() {
 cat << EOF > /root/encocoin-general-info
-echo -e "\n\n${BLUE}=======================================================================================================${NC}"
-echo -e "${GREEN}$PROJECT_NAME General Info: ${NC} $( $COIN_CLI getinfo )${NC}"
+echo -e "\n\n${BLUE}=======================================================================================================${NC}\n"
+echo -e "${GREEN}$PROJECT_NAME General Info: ${NC}$COIN_CLI getinfo${NC}"
 echo -e "${BLUE}=======================================================================================================${NC}\n"
 EOF
 chmod +x /root/encocoin-general-info
 
 cat << EOF > /root/encocoin-fee-info
-echo -e "\n\n${BLUE}=======================================================================================================${NC}"
-echo -e "${GREEN}$PROJECT_NAME Fee Info: ${NC} $( $COIN_CLI getfeeinfo 100 )${NC}"
+echo -e "\n\n${BLUE}=======================================================================================================${NC}\n"
+echo -e "${GREEN}$PROJECT_NAME Fee Info: ${NC}$COIN_CLI getfeeinfo 100${NC}"
 echo -e "${BLUE}=======================================================================================================${NC}\n"
 EOF
 chmod +x /root/encocoin-fee-info
 
 cat << EOF > /root/encocoin-networkinfo
-echo -e "\n\n${BLUE}=======================================================================================================${NC}"
-echo -e "${GREEN}$PROJECT_NAME Network Info: ${NC} $( $COIN_CLI getnetworkinfo )${NC}"
-echo -e "${BLUE}=======================================================================================================${NC}\n"
+echo -e "\n\n${BLUE}=======================================================================================================${NC}\n"
+echo -e "${GREEN}$PROJECT_NAME Network Info: ${NC}$COIN_CLI getnetworkinfo${NC}"
+echo -e "\n${BLUE}=======================================================================================================${NC}\n"
 EOF
 chmod +x /root/encocoin-networkinfo
 
 cat << EOF > /root/encocoin-masternode-stats
 echo -e "\n\n${BLUE}=======================================================================================================${NC}\n"
-echo -e "${GREEN}Last Block: ${NC}$( $COIN_CLI getblockcount )${NC}"
-echo -e "${GREEN}Masternode Sync Status: ${NC} $( $COIN_CLI mnsync status )${NC}"
+echo -e "${GREEN}Last Block: ${NC}$COIN_CLI getblockcount${NC}"
+echo -e "${GREEN}Masternode Sync Status: ${NC}$COIN_CLI mnsync status${NC}"
 echo -e "${GREEN}Masternode Status: ${NC}"
-echo -e "$( $COIN_CLI getmasternodestatus )${NC}"
-echo -e "${BLUE}=======================================================================================================${NC}\n"
+echo -e "$COIN_CLI getmasternodestatus${NC}"
+echo -e "\n${BLUE}=======================================================================================================${NC}\n"
 EOF
 chmod +x /root/encocoin-masternode-stats
 
+sed '/feestats/d' .bashrc | sed '/networkstats/d' | sed '/mnstats/d' | sed '/encocoininfo/d' > tmp
+mv tmp .bashrc
 echo -e "\n\n" >> .bashrc
 echo -e "alias encocoininfo='/root/encocoin-networkinfo'" >> .bashrc
 echo -e "alias feestats='/root/encocoin-fee-info'" >> .bashrc
