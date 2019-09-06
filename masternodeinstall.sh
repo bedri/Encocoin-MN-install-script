@@ -408,7 +408,7 @@ echo -e "alias encocoininfo='/root/encocoin-networkinfo'" >> /etc/profile
 echo -e "alias feestats='/root/encocoin-fee-info'" >> /etc/profile
 echo -e "alias networkstats='/root/encocoin-networkinfo'" >> /etc/profile
 echo -e "alias mnstats='/root/encocoin-masternode-stats'" >> /etc/profile
-bash /etc/profile
+bash
 }
 
 function important_information() {
