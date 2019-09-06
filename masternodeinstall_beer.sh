@@ -27,31 +27,31 @@ GREEN="\033[0;32m"
 NC='\033[0m'
 MAG='\e[1;35m'
 
-BEER=$'\xf0\x9f\x8d\xba'
+LOADING=$'\xf0\x9f\x8d\xba'
 
 purgeOldInstallation() {
     echo -e "${YELLOW}Searching and removing old ${BLUE}$PROJECT_NAME ${GREEN}Masternode ${YELLOW}files and configurations${NC}"
 	#stopping service
 	systemctl stop $COIN_NAME.service &
-	echo -ne "${BEER}${BEER}${BEER} ${GREEN}(10%)${NC}\r"
+	echo -ne "${NONE}${LOADING}${LOADING}${LOADING} ${GREEN}(10%)${NC}\r"
 	sleep 1
-	echo -ne "${BEER}${BEER}${BEER}${BEER}${BEER}${BEER} ${GREEN}(20%)${NC}\r"
+	echo -ne "${NONE}${LOADING}${LOADING}${LOADING}${LOADING}${LOADING}${LOADING} ${GREEN}(20%)${NC}\r"
 	sleep 1
-	echo -ne "${BEER}${BEER}${BEER}${BEER}${BEER}${BEER}${BEER}${BEER}${BEER} ${GREEN}(30%)${NC}\r"
+	echo -ne "${NONE}${LOADING}${LOADING}${LOADING}${LOADING}${LOADING}${LOADING}${LOADING}${LOADING}${LOADING} ${GREEN}(30%)${NC}\r"
 	sleep 1
-	echo -ne "${BEER}${BEER}${BEER}${BEER}${BEER}${BEER}${BEER}${BEER}${BEER}${BEER}${BEER}${BEER} ${GREEN}(40%)${NC}\r"
+	echo -ne "${NONE}${LOADING}${LOADING}${LOADING}${LOADING}${LOADING}${LOADING}${LOADING}${LOADING}${LOADING}${LOADING}${LOADING}${LOADING} ${GREEN}(40%)${NC}\r"
 	sleep 1
-	echo -ne "${BEER}${BEER}${BEER}${BEER}${BEER}${BEER}${BEER}${BEER}${BEER}${BEER}${BEER}${BEER}${BEER}${BEER}${BEER} ${GREEN}(50%)${NC}\r"
+	echo -ne "${NONE}${LOADING}${LOADING}${LOADING}${LOADING}${LOADING}${LOADING}${LOADING}${LOADING}${LOADING}${LOADING}${LOADING}${LOADING}${LOADING}${LOADING}${LOADING} ${GREEN}(50%)${NC}\r"
 	sleep 1
-	echo -ne "${BEER}${BEER}${BEER}${BEER}${BEER}${BEER}${BEER}${BEER}${BEER}${BEER}${BEER}${BEER}${BEER}${BEER}${BEER}${BEER}${BEER}${BEER} ${GREEN}(60%)${NC}\r"
+	echo -ne "${NONE}${LOADING}${LOADING}${LOADING}${LOADING}${LOADING}${LOADING}${LOADING}${LOADING}${LOADING}${LOADING}${LOADING}${LOADING}${LOADING}${LOADING}${LOADING}${LOADING}${LOADING}${LOADING} ${GREEN}(60%)${NC}\r"
 	sleep 1
-	echo -ne "${BEER}${BEER}${BEER}${BEER}${BEER}${BEER}${BEER}${BEER}${BEER}${BEER}${BEER}${BEER}${BEER}${BEER}${BEER}${BEER}${BEER}${BEER}${BEER}${BEER}${BEER} ${GREEN}(70%)${NC}\r"
+	echo -ne "${NONE}${LOADING}${LOADING}${LOADING}${LOADING}${LOADING}${LOADING}${LOADING}${LOADING}${LOADING}${LOADING}${LOADING}${LOADING}${LOADING}${LOADING}${LOADING}${LOADING}${LOADING}${LOADING}${LOADING}${LOADING}${LOADING} ${GREEN}(70%)${NC}\r"
 	sleep 1
-	echo -ne "${BEER}${BEER}${BEER}${BEER}${BEER}${BEER}${BEER}${BEER}${BEER}${BEER}${BEER}${BEER}${BEER}${BEER}${BEER}${BEER}${BEER}${BEER}${BEER}${BEER}${BEER}${BEER}${BEER}${BEER} ${GREEN}(80%)${NC}\r"
+	echo -ne "${NONE}${LOADING}${LOADING}${LOADING}${LOADING}${LOADING}${LOADING}${LOADING}${LOADING}${LOADING}${LOADING}${LOADING}${LOADING}${LOADING}${LOADING}${LOADING}${LOADING}${LOADING}${LOADING}${LOADING}${LOADING}${LOADING}${LOADING}${LOADING}${LOADING} ${GREEN}(80%)${NC}\r"
 	sleep 1
-	echo -ne "${BEER}${BEER}${BEER}${BEER}${BEER}${BEER}${BEER}${BEER}${BEER}${BEER}${BEER}${BEER}${BEER}${BEER}${BEER}${BEER}${BEER}${BEER}${BEER}${BEER}${BEER}${BEER}${BEER}${BEER}${BEER}${BEER}${BEER} ${GREEN}(90%)${NC}\r"
+	echo -ne "${NONE}${LOADING}${LOADING}${LOADING}${LOADING}${LOADING}${LOADING}${LOADING}${LOADING}${LOADING}${LOADING}${LOADING}${LOADING}${LOADING}${LOADING}${LOADING}${LOADING}${LOADING}${LOADING}${LOADING}${LOADING}${LOADING}${LOADING}${LOADING}${LOADING}${LOADING}${LOADING}${LOADING} ${GREEN}(90%)${NC}\r"
 	sleep 1
-	echo -ne "${BEER}${BEER}${BEER}${BEER}${BEER}${BEER}${BEER}${BEER}${BEER}${BEER}${BEER}${BEER}${BEER}${BEER}${BEER}${BEER}${BEER}${BEER}${BEER}${BEER}${BEER}${BEER}${BEER}${BEER}${BEER}${BEER}${BEER}${BEER}${BEER}${BEER} ${GREEN}(100%)${NC}\r"
+	echo -ne "${NONE}${LOADING}${LOADING}${LOADING}${LOADING}${LOADING}${LOADING}${LOADING}${LOADING}${LOADING}${LOADING}${LOADING}${LOADING}${LOADING}${LOADING}${LOADING}${LOADING}${LOADING}${LOADING}${LOADING}${LOADING}${LOADING}${LOADING}${LOADING}${LOADING}${LOADING}${LOADING}${LOADING}${LOADING}${LOADING}${LOADING} ${GREEN}(100%)${NC}\r"
 	sleep 1
 	echo -ne '\n'
 	# sleep 10
@@ -125,11 +125,11 @@ EOF
 
 	echo -e "\nReloading Service Daemon\n"
   	systemctl daemon-reload
-	echo -ne "${BEER}${BEER}${BEER}## ${GREEN}(33%)${NC}\r"
+	echo -ne "${NONE}${LOADING}${LOADING}${LOADING}## ${GREEN}(33%)${NC}\r"
 	sleep 1
-	echo -ne "${BEER}${BEER}${BEER}${BEER}${BEER}${BEER}${BEER}${BEER}${BEER}${BEER}${BEER}${BEER}# ${GREEN}(66%)${NC}\r"
+	echo -ne "${NONE}${LOADING}${LOADING}${LOADING}${LOADING}${LOADING}${LOADING}${LOADING}${LOADING}${LOADING}${LOADING}${LOADING}${LOADING}# ${GREEN}(66%)${NC}\r"
 	sleep 1
-	echo -ne "${BEER}${BEER}${BEER}${BEER}${BEER}${BEER}${BEER}${BEER}${BEER}${BEER}${BEER}${BEER}${BEER}${BEER}${BEER}${BEER}${BEER}${BEER}${BEER}${BEER}${BEER}## ${GREEN}(100%)${NC}\r"
+	echo -ne "${NONE}${LOADING}${LOADING}${LOADING}${LOADING}${LOADING}${LOADING}${LOADING}${LOADING}${LOADING}${LOADING}${LOADING}${LOADING}${LOADING}${LOADING}${LOADING}${LOADING}${LOADING}${LOADING}${LOADING}${LOADING}${LOADING}## ${GREEN}(100%)${NC}\r"
 	sleep 1
 	echo -ne '\n'
     echo -e "${GREEN}* Done${NONE}";
@@ -174,25 +174,25 @@ function create_key() {
   read -e COINKEY
   if [[ -z "$COINKEY" ]]; then
   $COIN_PATH$COIN_DAEMON -daemon
-	echo -ne "${BEER}${BEER}${BEER} ${GREEN}(10%)${NC}\r"
+	echo -ne "${NONE}${LOADING}${LOADING}${LOADING} ${GREEN}(10%)${NC}\r"
 	sleep 3
-	echo -ne "${BEER}${BEER}${BEER}${BEER}${BEER}${BEER} ${GREEN}(20%)${NC}\r"
+	echo -ne "${NONE}${LOADING}${LOADING}${LOADING}${LOADING}${LOADING}${LOADING} ${GREEN}(20%)${NC}\r"
 	sleep 3
-	echo -ne "${BEER}${BEER}${BEER}${BEER}${BEER}${BEER}${BEER}${BEER}${BEER} ${GREEN}(30%)${NC}\r"
+	echo -ne "${NONE}${LOADING}${LOADING}${LOADING}${LOADING}${LOADING}${LOADING}${LOADING}${LOADING}${LOADING} ${GREEN}(30%)${NC}\r"
 	sleep 3
-	echo -ne "${BEER}${BEER}${BEER}${BEER}${BEER}${BEER}${BEER}${BEER}${BEER}${BEER}${BEER}${BEER} ${GREEN}(40%)${NC}\r"
+	echo -ne "${NONE}${LOADING}${LOADING}${LOADING}${LOADING}${LOADING}${LOADING}${LOADING}${LOADING}${LOADING}${LOADING}${LOADING}${LOADING} ${GREEN}(40%)${NC}\r"
 	sleep 3
-	echo -ne "${BEER}${BEER}${BEER}${BEER}${BEER}${BEER}${BEER}${BEER}${BEER}${BEER}${BEER}${BEER}${BEER}${BEER}${BEER} ${GREEN}(50%)${NC}\r"
+	echo -ne "${NONE}${LOADING}${LOADING}${LOADING}${LOADING}${LOADING}${LOADING}${LOADING}${LOADING}${LOADING}${LOADING}${LOADING}${LOADING}${LOADING}${LOADING}${LOADING} ${GREEN}(50%)${NC}\r"
 	sleep 3
-	echo -ne "${BEER}${BEER}${BEER}${BEER}${BEER}${BEER}${BEER}${BEER}${BEER}${BEER}${BEER}${BEER}${BEER}${BEER}${BEER}${BEER}${BEER}${BEER} ${GREEN}(60%)${NC}\r"
+	echo -ne "${NONE}${LOADING}${LOADING}${LOADING}${LOADING}${LOADING}${LOADING}${LOADING}${LOADING}${LOADING}${LOADING}${LOADING}${LOADING}${LOADING}${LOADING}${LOADING}${LOADING}${LOADING}${LOADING} ${GREEN}(60%)${NC}\r"
 	sleep 3
-	echo -ne "${BEER}${BEER}${BEER}${BEER}${BEER}${BEER}${BEER}${BEER}${BEER}${BEER}${BEER}${BEER}${BEER}${BEER}${BEER}${BEER}${BEER}${BEER}${BEER}${BEER}${BEER} ${GREEN}(70%)${NC}\r"
+	echo -ne "${NONE}${LOADING}${LOADING}${LOADING}${LOADING}${LOADING}${LOADING}${LOADING}${LOADING}${LOADING}${LOADING}${LOADING}${LOADING}${LOADING}${LOADING}${LOADING}${LOADING}${LOADING}${LOADING}${LOADING}${LOADING}${LOADING} ${GREEN}(70%)${NC}\r"
 	sleep 3
-	echo -ne "${BEER}${BEER}${BEER}${BEER}${BEER}${BEER}${BEER}${BEER}${BEER}${BEER}${BEER}${BEER}${BEER}${BEER}${BEER}${BEER}${BEER}${BEER}${BEER}${BEER}${BEER}${BEER}${BEER}${BEER} ${GREEN}(80%)${NC}\r"
+	echo -ne "${NONE}${LOADING}${LOADING}${LOADING}${LOADING}${LOADING}${LOADING}${LOADING}${LOADING}${LOADING}${LOADING}${LOADING}${LOADING}${LOADING}${LOADING}${LOADING}${LOADING}${LOADING}${LOADING}${LOADING}${LOADING}${LOADING}${LOADING}${LOADING}${LOADING} ${GREEN}(80%)${NC}\r"
 	sleep 3
-	echo -ne "${BEER}${BEER}${BEER}${BEER}${BEER}${BEER}${BEER}${BEER}${BEER}${BEER}${BEER}${BEER}${BEER}${BEER}${BEER}${BEER}${BEER}${BEER}${BEER}${BEER}${BEER}${BEER}${BEER}${BEER}${BEER}${BEER}${BEER} ${GREEN}(90%)${NC}\r"
+	echo -ne "${NONE}${LOADING}${LOADING}${LOADING}${LOADING}${LOADING}${LOADING}${LOADING}${LOADING}${LOADING}${LOADING}${LOADING}${LOADING}${LOADING}${LOADING}${LOADING}${LOADING}${LOADING}${LOADING}${LOADING}${LOADING}${LOADING}${LOADING}${LOADING}${LOADING}${LOADING}${LOADING}${LOADING} ${GREEN}(90%)${NC}\r"
 	sleep 3
-	echo -ne "${BEER}${BEER}${BEER}${BEER}${BEER}${BEER}${BEER}${BEER}${BEER}${BEER}${BEER}${BEER}${BEER}${BEER}${BEER}${BEER}${BEER}${BEER}${BEER}${BEER}${BEER}${BEER}${BEER}${BEER}${BEER}${BEER}${BEER}${BEER}${BEER}${BEER} ${GREEN}(100%)${NC}\r"
+	echo -ne "${NONE}${LOADING}${LOADING}${LOADING}${LOADING}${LOADING}${LOADING}${LOADING}${LOADING}${LOADING}${LOADING}${LOADING}${LOADING}${LOADING}${LOADING}${LOADING}${LOADING}${LOADING}${LOADING}${LOADING}${LOADING}${LOADING}${LOADING}${LOADING}${LOADING}${LOADING}${LOADING}${LOADING}${LOADING}${LOADING}${LOADING} ${GREEN}(100%)${NC}\r"
 	sleep 3
 	echo -ne '\n'
     echo -e "${GREEN}* Done${NONE}";
@@ -205,25 +205,25 @@ function create_key() {
   if [ "$?" -gt "0" ];
     then
     echo -e "${RED}Wallet not fully loaded. Let us wait and try again to generate the ${GREEN}Masternode Private Key${NC}"
-	echo -ne "${BEER}${BEER}${BEER} ${GREEN}(10%)${NC}\r"
+	echo -ne "${NONE}${LOADING}${LOADING}${LOADING} ${GREEN}(10%)${NC}\r"
 	sleep 3
-	echo -ne "${BEER}${BEER}${BEER}${BEER}${BEER}${BEER} ${GREEN}(20%)${NC}\r"
+	echo -ne "${NONE}${LOADING}${LOADING}${LOADING}${LOADING}${LOADING}${LOADING} ${GREEN}(20%)${NC}\r"
 	sleep 3
-	echo -ne "${BEER}${BEER}${BEER}${BEER}${BEER}${BEER}${BEER}${BEER}${BEER} ${GREEN}(30%)${NC}\r"
+	echo -ne "${NONE}${LOADING}${LOADING}${LOADING}${LOADING}${LOADING}${LOADING}${LOADING}${LOADING}${LOADING} ${GREEN}(30%)${NC}\r"
 	sleep 3
-	echo -ne "${BEER}${BEER}${BEER}${BEER}${BEER}${BEER}${BEER}${BEER}${BEER}${BEER}${BEER}${BEER} ${GREEN}(40%)${NC}\r"
+	echo -ne "${NONE}${LOADING}${LOADING}${LOADING}${LOADING}${LOADING}${LOADING}${LOADING}${LOADING}${LOADING}${LOADING}${LOADING}${LOADING} ${GREEN}(40%)${NC}\r"
 	sleep 3
-	echo -ne "${BEER}${BEER}${BEER}${BEER}${BEER}${BEER}${BEER}${BEER}${BEER}${BEER}${BEER}${BEER}${BEER}${BEER}${BEER} ${GREEN}(50%)${NC}\r"
+	echo -ne "${NONE}${LOADING}${LOADING}${LOADING}${LOADING}${LOADING}${LOADING}${LOADING}${LOADING}${LOADING}${LOADING}${LOADING}${LOADING}${LOADING}${LOADING}${LOADING} ${GREEN}(50%)${NC}\r"
 	sleep 3
-	echo -ne "${BEER}${BEER}${BEER}${BEER}${BEER}${BEER}${BEER}${BEER}${BEER}${BEER}${BEER}${BEER}${BEER}${BEER}${BEER}${BEER}${BEER}${BEER} ${GREEN}(60%)${NC}\r"
+	echo -ne "${NONE}${LOADING}${LOADING}${LOADING}${LOADING}${LOADING}${LOADING}${LOADING}${LOADING}${LOADING}${LOADING}${LOADING}${LOADING}${LOADING}${LOADING}${LOADING}${LOADING}${LOADING}${LOADING} ${GREEN}(60%)${NC}\r"
 	sleep 3
-	echo -ne "${BEER}${BEER}${BEER}${BEER}${BEER}${BEER}${BEER}${BEER}${BEER}${BEER}${BEER}${BEER}${BEER}${BEER}${BEER}${BEER}${BEER}${BEER}${BEER}${BEER}${BEER} ${GREEN}(70%)${NC}\r"
+	echo -ne "${NONE}${LOADING}${LOADING}${LOADING}${LOADING}${LOADING}${LOADING}${LOADING}${LOADING}${LOADING}${LOADING}${LOADING}${LOADING}${LOADING}${LOADING}${LOADING}${LOADING}${LOADING}${LOADING}${LOADING}${LOADING}${LOADING} ${GREEN}(70%)${NC}\r"
 	sleep 3
-	echo -ne "${BEER}${BEER}${BEER}${BEER}${BEER}${BEER}${BEER}${BEER}${BEER}${BEER}${BEER}${BEER}${BEER}${BEER}${BEER}${BEER}${BEER}${BEER}${BEER}${BEER}${BEER}${BEER}${BEER}${BEER} ${GREEN}(80%)${NC}\r"
+	echo -ne "${NONE}${LOADING}${LOADING}${LOADING}${LOADING}${LOADING}${LOADING}${LOADING}${LOADING}${LOADING}${LOADING}${LOADING}${LOADING}${LOADING}${LOADING}${LOADING}${LOADING}${LOADING}${LOADING}${LOADING}${LOADING}${LOADING}${LOADING}${LOADING}${LOADING} ${GREEN}(80%)${NC}\r"
 	sleep 3
-	echo -ne "${BEER}${BEER}${BEER}${BEER}${BEER}${BEER}${BEER}${BEER}${BEER}${BEER}${BEER}${BEER}${BEER}${BEER}${BEER}${BEER}${BEER}${BEER}${BEER}${BEER}${BEER}${BEER}${BEER}${BEER}${BEER}${BEER}${BEER} ${GREEN}(90%)${NC}\r"
+	echo -ne "${NONE}${LOADING}${LOADING}${LOADING}${LOADING}${LOADING}${LOADING}${LOADING}${LOADING}${LOADING}${LOADING}${LOADING}${LOADING}${LOADING}${LOADING}${LOADING}${LOADING}${LOADING}${LOADING}${LOADING}${LOADING}${LOADING}${LOADING}${LOADING}${LOADING}${LOADING}${LOADING}${LOADING} ${GREEN}(90%)${NC}\r"
 	sleep 3
-	echo -ne "${BEER}${BEER}${BEER}${BEER}${BEER}${BEER}${BEER}${BEER}${BEER}${BEER}${BEER}${BEER}${BEER}${BEER}${BEER}${BEER}${BEER}${BEER}${BEER}${BEER}${BEER}${BEER}${BEER}${BEER}${BEER}${BEER}${BEER}${BEER}${BEER}${BEER} ${GREEN}(100%)${NC}\r"
+	echo -ne "${NONE}${LOADING}${LOADING}${LOADING}${LOADING}${LOADING}${LOADING}${LOADING}${LOADING}${LOADING}${LOADING}${LOADING}${LOADING}${LOADING}${LOADING}${LOADING}${LOADING}${LOADING}${LOADING}${LOADING}${LOADING}${LOADING}${LOADING}${LOADING}${LOADING}${LOADING}${LOADING}${LOADING}${LOADING}${LOADING}${LOADING} ${GREEN}(100%)${NC}\r"
 	sleep 3
 	echo -ne '\n'
     echo -e "${GREEN}* Done${NONE}";
@@ -402,20 +402,20 @@ echo -e "\n${BLUE}==============================================================
 EOF
 chmod +x /root/encocoin-masternode-stats
 
-cp /etc/profile /etc/profile.backup
-sed '/feestats/d' /etc/profile | sed '/networkstats/d' | sed '/mnstats/d' | sed '/encocoininfo/d' > /root/tmp
-mv /root/tmp /etc/profile
-echo -e "alias encocoininfo='/root/encocoin-networkinfo'" >> /etc/profile
-echo -e "alias feestats='/root/encocoin-fee-info'" >> /etc/profile
-echo -e "alias networkstats='/root/encocoin-networkinfo'" >> /etc/profile
-echo -e "alias mnstats='/root/encocoin-masternode-stats'" >> /etc/profile
+cp /root/.bashrc /root/.bashrc.backup
+sed '/feestats/d' /root/.bashrc | sed '/networkstats/d' | sed '/mnstats/d' | sed '/encocoininfo/d' > /root/tmp
+mv /root/tmp /root/.bashrc
+echo -e "alias encocoininfo='/root/encocoin-networkinfo'" >> /root/.bashrc
+echo -e "alias feestats='/root/encocoin-fee-info'" >> /root/.bashrc
+echo -e "alias networkstats='/root/encocoin-networkinfo'" >> /root/.bashrc
+echo -e "alias mnstats='/root/encocoin-masternode-stats'" >> /root/.bashrc
 
 alias encocoininfo='/root/encocoin-networkinfo'
 alias feestats='/root/encocoin-fee-info'
 alias networkstats='/root/encocoin-networkinfo'
 alias mnstats='/root/encocoin-masternode-stats'
 
-exec "$BASH"
+source /root/.bashrc
 }
 
 function important_information() {
@@ -452,7 +452,7 @@ function setup_node() {
 }
 
 
-${BEER}${BEER}${BEER}## Main ${BEER}${BEER}${BEER}##
+${LOADING}${LOADING}${LOADING}## Main ${LOADING}${LOADING}${LOADING}##
 clear
 
 purgeOldInstallation
