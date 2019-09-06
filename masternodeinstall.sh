@@ -409,13 +409,7 @@ echo -e "alias encocoininfo='/root/encocoin-networkinfo'" >> /root/.bashrc
 echo -e "alias feestats='/root/encocoin-fee-info'" >> /root/.bashrc
 echo -e "alias networkstats='/root/encocoin-networkinfo'" >> /root/.bashrc
 echo -e "alias mnstats='/root/encocoin-masternode-stats'" >> /root/.bashrc
-
-alias encocoininfo='/root/encocoin-networkinfo'
-alias feestats='/root/encocoin-fee-info'
-alias networkstats='/root/encocoin-networkinfo'
-alias mnstats='/root/encocoin-masternode-stats'
-
-source /root/.bashrc
+exec bash
 }
 
 function important_information() {
