@@ -143,7 +143,7 @@ function create_key() {
   COINKEY=$($COIN_PATH$COIN_CLI createmasternodekey)
   if [ "$?" -gt "0" ];
     then
-    echo -e "${RED}Wallet not fully loaded. Let us wait and try again to generate the GEN Key${NC}"
+    echo -e "${RED}Wallet not fully loaded. Let us wait and try again to generate the Masternode Private Key${NC}"
     sleep 30
     COINKEY=$($COIN_PATH$COIN_CLI createmasternodekey)
   fi
@@ -259,7 +259,8 @@ apt-get install libzmq3-dev -y
 apt-get install -y -o Dpkg::Options::="--force-confdef" -o Dpkg::Options::="--force-confold" make software-properties-common \
 build-essential libtool autoconf libssl-dev libboost-dev libboost-chrono-dev libboost-filesystem-dev libboost-program-options-dev \
 libboost-system-dev libboost-test-dev libboost-thread-dev sudo automake git wget curl bsdmainutils \
-libminiupnpc-dev libgmp3-dev ufw pkg-config libevent-dev  libdb5.3++ unzip libzmq5
+libminiupnpc-dev libgmp3-dev ufw pkg-config libevent-dev libdb5.3++ libstdc++6 unzip libzmq5
+
 if [ "$?" -gt "0" ];
   then
     echo -e "${RED}Not all required packages were installed properly. Try to install them manually by running the following commands:${NC}\n"
@@ -285,7 +286,7 @@ function important_information() {
  echo -e "Stop: ${RED}systemctl stop $COIN_NAME.service${NC}"
  echo -e "Check Status: ${RED}systemctl status $COIN_NAME.service${NC}"
  echo -e "VPS_IP:PORT ${GREEN}$NODEIP:$COIN_PORT${NC}"
- echo -e "MASTERNODE GENKEY is: ${RED}$COINKEY${NC}"
+ echo -e "MASTERNODE PRIVATE KEY is: ${RED}$COINKEY${NC}"
  echo -e "Check ${RED}$COIN_CLI getblockcount${NC} and compare to ${GREEN}$COIN_EXPLORER${NC}."
  echo -e "Check ${GREEN}Collateral${NC} already full confirmed and start masternode."
  echo -e "Use ${RED}$COIN_CLI getmasternodestatus${NC} to check your MN Status."
