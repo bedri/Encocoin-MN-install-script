@@ -332,7 +332,7 @@ echo -e "alias feestats='/root/encocoin-fee-info'" >> .bashrc
 echo -e "alias networkstats='/root/encocoin-networkinfo'" >> .bashrc
 echo -e "alias mnstats='/root/encocoin-masternode-stats'" >> .bashrc
 $( . .bashrc )
-cd -
+# cd -
 }
 
 function important_information() {
