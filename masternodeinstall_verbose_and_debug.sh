@@ -296,7 +296,7 @@ echo -e "\n\n${MAG}=============================================================
 echo -e "${GREEN}$PROJECT_NAME Fee Info: ${NC}\n $( $COIN_CLI getfeeinfo 100 )${NC}\n"
 echo -e "${MAG}=======================================================================================================${NC}\n\n"
 EOF
-chmod +x /root/encocoin-general-info
+chmod +x /root/encocoin-fee-info
 
 cat << EOF > /root/encocoin-networkinfo
 echo -e "\n\n${CYAN}=======================================================================================================${NC}\n"
@@ -320,7 +320,7 @@ echo -e "alias encocoininfo='/root/encocoin-networkinfo'" >> .bashrc
 echo -e "alias feestats='/root/encocoin-fee-info'" >> .bashrc
 echo -e "alias networkstats='/root/encocoin-networkinfo'" >> .bashrc
 echo -e "alias mnstats='/root/encocoin-masternode-stats'" >> .bashrc
-. .bashrc
+$( . .bashrc )
 cd -
 }
 
