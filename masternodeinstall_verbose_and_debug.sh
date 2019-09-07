@@ -123,7 +123,7 @@ StartLimitBurst=5
 WantedBy=multi-user.target
 EOF
 
-	echo -e "\nReloading Service Daemon\n"
+	echo -e "\n${GREEN}Reloading Service Daemon${NC}\n"
   	systemctl daemon-reload
 	echo -ne "${RED}${LICON}${LICON}${LICON}## ${GREEN}(33%)${NC}\r"
 	sleep 1
