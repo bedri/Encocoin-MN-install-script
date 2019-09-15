@@ -1,7 +1,7 @@
 # Encocoin-MN-install-script
 Encocoin PoS (XNK-POS) Masternode Install Script
 
-**_These scripts are tested on Hetzner VPS with Ubuntu 16.04 and Ubuntu 16.04 operating systems. Although it should work with all VPS hosts you should test it before using it._**
+**_These scripts are tested on Hetzner VPS with Ubuntu 16.04 and Ubuntu 18.04 operating systems. Although it should work with all VPS hosts you should test it before using it._**
 
 ### Installation of Encocoin PoS (XNK PoS) Masternode and usage of script
 
