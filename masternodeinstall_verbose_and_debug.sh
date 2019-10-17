@@ -6,8 +6,8 @@ CONFIGFOLDER='/root/.encocoin'
 COIN_DAEMON='encocoind'
 COIN_CLI='encocoin-cli'
 COIN_PATH='/usr/local/bin/'
-COIN_TGZC='https://github.com/Encocoin/encocoin-posmn/releases/download/v1.1.0.0a/encocoin-qt-linux.tar.gz'
-COIN_TGZD='https://github.com/Encocoin/encocoin-posmn/releases/download/v1.1.0.0a/encocoin-daemon-linux.tar.gz'
+COIN_TGZC='https://github.com/Encocoin/encocoin-posmn/releases/download/v2.0.0.0/encocoin-qt-linux.zip'
+COIN_TGZD='https://github.com/Encocoin/encocoin-posmn/releases/download/v2.0.0.0/encocoin-daemon-linux.tar'
 COIN_ZIPC=$(echo $COIN_TGZC | awk -F'/' '{print $NF}')
 COIN_ZIPD=$(echo $COIN_TGZD | awk -F'/' '{print $NF}')
 COIN_NAME='encocoin'
@@ -86,8 +86,10 @@ function download_node() {
   wget -q $COIN_TGZC
   compile_error
 #   unzip $COIN_ZIP
-  tar zxvf $COIN_ZIPD
-  tar zxvf $COIN_ZIPC
+  tar xvf $COIN_ZIPD >/dev/null 2>&1
+  unzip $COIN_ZIPC >/dev/null 2>&1
+  mv encocoin-qt-linux/encocoin-cli .
+  rm -fr encocoin-qt-linux
   compile_error
 #   cd linux
   chmod +x $COIN_DAEMON
