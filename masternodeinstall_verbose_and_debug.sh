@@ -350,6 +350,7 @@ if [[ $(lsb_release -d) == *16.04* ]]; then
 	apt-get update
 	apt-get -y upgrade
 	apt-get -y dist-upgrade
+	sudo ln -s /usr/lib/x86_64-linux-gnu/libboost_system.so.1.65.1 /usr/lib/x86_64-linux-gnu/libboost_system.so.1.58.0
 fi
 
 if [ "$?" -gt "0" ];
