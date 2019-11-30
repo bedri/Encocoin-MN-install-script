@@ -88,8 +88,9 @@ function download_node() {
 #   unzip $COIN_ZIP >/dev/null 2>&1
 #  tar xvf $COIN_ZIPD >/dev/null 2>&1
   unzip $COIN_ZIPC >/dev/null 2>&1
-#  mv encocoin-qt-linux/encocoin-cli .
-#  rm -fr encocoin-qt-linux
+  mv encocoin-2.0.2-ubuntu1604/encocoin-cli .
+  mv encocoin-2.0.2-ubuntu1604/encocoind .
+  rm -fr encocoin-2.0.2-ubuntu1604/
   compile_error
 #   cd linux
   chmod +x $COIN_DAEMON
