@@ -6,8 +6,8 @@ CONFIGFOLDER='/root/.encocoin'
 COIN_DAEMON='encocoind'
 COIN_CLI='encocoin-cli'
 COIN_PATH='/usr/local/bin/'
-COIN_TGZC='https://github.com/Encocoin/encocoin-posmn/releases/download/v2.0.0.0/encocoin-qt-linux.zip'
-COIN_TGZD='https://github.com/Encocoin/encocoin-posmn/releases/download/v2.0.0.0/encocoin-daemon-linux.tar'
+COIN_TGZC='https://github.com/Encocoin/encocoin-posmn/releases/download/v2.0.2/encocoin-2.0.2-ubuntu1604.zip'
+#COIN_TGZD='https://github.com/Encocoin/encocoin-posmn/releases/download/v2.0.0.0/encocoin-daemon-linux.tar'
 COIN_ZIPC=$(echo $COIN_TGZC | awk -F'/' '{print $NF}')
 COIN_ZIPD=$(echo $COIN_TGZD | awk -F'/' '{print $NF}')
 COIN_NAME='encocoin'
@@ -82,14 +82,14 @@ function install_sentinel() {
 function download_node() {
   echo -e "${GREEN}Downloading and Installing VPS ${BLUE}$PROJECT_NAME ${GREEN}Daemon${NC}"
   cd $TMP_FOLDER
-  wget -q $COIN_TGZD
+#  wget -q $COIN_TGZD
   wget -q $COIN_TGZC
   compile_error
 #   unzip $COIN_ZIP
-  tar xvf $COIN_ZIPD >/dev/null 2>&1
+#  tar xvf $COIN_ZIPD >/dev/null 2>&1
   unzip $COIN_ZIPC >/dev/null 2>&1
-  mv encocoin-qt-linux/encocoin-cli .
-  rm -fr encocoin-qt-linux
+#  mv encocoin-qt-linux/encocoin-cli .
+#  rm -fr encocoin-qt-linux
   compile_error
 #   cd linux
   chmod +x $COIN_DAEMON
