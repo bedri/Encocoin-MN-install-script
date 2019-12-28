@@ -429,7 +429,7 @@ chmod +x /root/encocoin-masternode-stats
 cp /root/.bashrc /root/.bashrc.backup
 sed '/feestats/d' /root/.bashrc | sed '/networkstats/d' | sed '/mnstats/d' | sed '/encocoininfo/d' > /root/tmp
 mv /root/tmp /root/.bashrc
-echo -e "alias encocoininfo='/root/encocoin-networkinfo'" >> /root/.bashrc
+echo -e "alias encocoininfo='/root/encocoin-general-info'" >> /root/.bashrc
 echo -e "alias feestats='/root/encocoin-fee-info'" >> /root/.bashrc
 echo -e "alias networkstats='/root/encocoin-networkinfo'" >> /root/.bashrc
 echo -e "alias mnstats='/root/encocoin-masternode-stats'" >> /root/.bashrc
